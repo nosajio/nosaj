@@ -10,6 +10,7 @@
     },
     "client": {
       "source": "src/client/index.html",
+      "distDir": "dist",
       "engines": {
         "browsers": "> 0.5%, last 2 versions, not dead"
       }
@@ -32,11 +33,13 @@
     "watch": "nodemon --watch src -e ts,css,html --exec 'yarn build && yarn start'"
   },
   "dependencies": {
-    "fastify": "^3.29.0",
-    "normalize.css": "^8.0.1"
+    "express": "^4.18.1",
+    "normalize.css": "^8.0.1",
+    "nunjucks": "^3.2.3"
   },
   "devDependencies": {
     "@types/node": "^17.0.38",
+    "@types/nunjucks": "^3.2.1",
     "nodemon": "^2.0.16",
     "parcel": "^2.6.0",
     "postcss": "^8.0.0",

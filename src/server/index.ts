@@ -1,18 +1,24 @@
-import fastify from "fastify";
+import njk from "nunjucks";
+import express from "express";
+import path from 'path';
 
 const PORT = process.env?.PORT ?? 8080;
-const server = fastify({ logger: true });
+const server = express({ logger: true });
+const viewsDir = path.join('src', 'server', 'views');
+
+njk.configure(viewsDir, {
+  autoescape: true,
+  express: server,
+});
 
 start();
 
 server.get("/", async (req, res) => {
-  return {
-    one: 3,
-  };
+  res.render("home.njk");
 });
 
 async function start() {
-  console.log("start server");
+  console.log("Start server on port %s", PORT);
   try {
     await server.listen(PORT);
   } catch (err) {
