@@ -1,7 +1,24 @@
 {
   "name": "nosaj_raw",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server/index.js",
+  "targets": {
+    "default": {
+      "distDir": "dist"
+    },
+    "client": {
+      "source": "src/client/index.html",
+      "engines": {
+        "browsers": "> 0.5%, last 2 versions, not dead"
+      }
+    },
+    "server": {
+      "engines": {
+        "node": ">= 12"
+      },
+      "source": "src/server/index.ts"
+    }
+  },
   "author": "Jason Howmans <jason@nosaj.io>",
   "license": "MIT",
   "@parcel/transformer-css": {
@@ -10,10 +27,13 @@
     }
   },
   "scripts": {
-    "build": "parcel src/index.html"
+    "build": "parcel build",
+    "watch": "parcel watch"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "@swc/helpers": "^0.3.17",
+    "regenerator-runtime": "^0.13.9"
   },
   "devDependencies": {
     "parcel": "^2.6.0",
