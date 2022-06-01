@@ -1,0 +1,25 @@
+{
+  "name": "nosaj_raw",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Jason Howmans <jason@nosaj.io>",
+  "license": "MIT",
+  "@parcel/transformer-css": {
+    "drafts": {
+      "nesting": true
+    }
+  },
+  "scripts": {
+    "build": "parcel src/index.html"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "parcel": "^2.6.0",
+    "postcss": "^8.4",
+    "postcss-custom-properties": "^12.1.7",
+    "postcss-import": "^14.1.0",
+    "postcss-url": "^10.1.3"
+  }
+}
