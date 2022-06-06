@@ -1,8 +1,10 @@
 const esbuild = require("esbuild");
 const nativeNodeModulesPlugin = require("./esbuildAddonLoader");
 const { sassPlugin } = require("esbuild-sass-plugin");
+const path = require("path");
 
 const outdir = "dist";
+const publicdir = path.join(outdir, "public");
 
 build();
 
@@ -29,7 +31,7 @@ function build() {
       entryPoints: ["src/css/index.scss"],
       bundle: true,
       plugins: [sassPlugin()],
-      outdir,
+      outdir: publicdir,
     })
     .catch(catchBuildError);
 }
