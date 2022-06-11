@@ -1,6 +1,6 @@
 import h from "hyperscript";
 
-export default ({ children }: Record<any, any>): JSX.Element => (
+export default ({ children, css }: Record<any, any>): JSX.Element => (
   <html>
     <head>
       <meta charSet="utf-8" />
@@ -18,6 +18,8 @@ export default ({ children }: Record<any, any>): JSX.Element => (
       <link rel="apple-touch-icon" href="icon.png" />
 
       <link rel="stylesheet" href="index.css" />
+      
+      <style>{css}</style>
 
       <link rel="manifest" href="nosaj.webmanifest" />
       <meta name="theme-color" content="#fafafa" />

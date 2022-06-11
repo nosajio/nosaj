@@ -1,10 +1,5 @@
 const esbuild = require("esbuild");
 const nativeNodeModulesPlugin = require("./esbuildAddonLoader");
-const { sassPlugin } = require("esbuild-sass-plugin");
-const path = require("path");
-
-const outdir = "dist";
-const publicdir = path.join(outdir, "public");
 
 build();
 
@@ -14,6 +9,9 @@ function catchBuildError(err) {
 }
 
 function build() {
+  const outdir = "dist";
+  require("./copyPublic")();
+
   // Build the TS and TSX files
   esbuild
     .build({
@@ -22,16 +20,6 @@ function build() {
       platform: "node",
       plugins: [nativeNodeModulesPlugin],
       outdir,
-    })
-    .catch(catchBuildError);
-
-  // Build the postcss files
-  esbuild
-    .build({
-      entryPoints: ["src/css/index.scss"],
-      bundle: true,
-      plugins: [sassPlugin()],
-      outdir: publicdir,
     })
     .catch(catchBuildError);
 }
