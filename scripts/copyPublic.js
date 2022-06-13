@@ -1,4 +1,5 @@
 const path = require("path");
+const rimraf = require("rimraf");
 const fs = require("fs/promises");
 
 const publicDir = path.join(__dirname, "..", "src", "public");
@@ -15,10 +16,13 @@ async function copyPublicDir() {
 
   // Nuke the current public dir
   try {
-    if (await (await fs.stat(publicDirDist)).isDirectory())
+    if (await (await fs.stat(publicDirDist)).isDirectory()) {
       rimraf(publicDirDist, createAndCopy);
+    } else {
+      await createAndCopy();
+    }
   } catch (err) {
-    await createAndCopy();
+    console.error(err);
   }
 }
 

@@ -1,5 +1,5 @@
 import { extractCss } from "goober";
-import "./styles/globals";
+import "./styles/globals.css";
 
 export const views = {
   async _document(props: Record<any, any>) {
