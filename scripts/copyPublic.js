@@ -10,7 +10,7 @@ module.exports = copyPublicDir;
 async function copyPublicDir() {
   const createAndCopy = async () => {
     // Create the new empty dir in dist, then copy contents over
-    await fs.mkdir(publicDirDist);
+    await fs.mkdir(publicDirDist, { recursive: true });
     await copyAll(publicDir, publicDirDist);
   };
 
@@ -22,7 +22,7 @@ async function copyPublicDir() {
       await createAndCopy();
     }
   } catch (err) {
-    console.error(err);
+    await createAndCopy();
   }
 }
 

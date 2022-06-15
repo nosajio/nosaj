@@ -13,7 +13,6 @@ server.use(express.static(path.join(__dirname, "public")));
 
 server.get("/", async (_req, res) => {
   const html = await render.jsx("home", { name: "JJJ" });
-  console.log(html);
   res.end(html);
 });
 

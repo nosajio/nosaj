@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
 const rimraf = require("rimraf");
+const copyPublicDir = require("./copyPublic");
 
 const distPath = path.resolve(__dirname, "..", "dist");
 const srcPath = path.resolve(__dirname, "..", "src");
@@ -11,85 +12,92 @@ const isDev = !isProduction;
 
 rimraf.sync(distPath);
 
-const webpackCb = (err, stats) => {
-  if (err) {
-    console.error(err.stack || err);
-    if (err.details) {
-      console.error(err.details);
+copyPublicDir().then(() => {
+  console.log("Copied public files...");
+  build();
+});
+
+function build() {
+  const webpackCb = (err, stats) => {
+    if (err) {
+      console.error(err.stack || err);
+      if (err.details) {
+        console.error(err.details);
+      }
+      process.exit(1);
+      return;
     }
-    process.exit(1);
-    return;
-  }
-  const info = stats.toJson();
+    const info = stats.toJson();
 
-  if (stats.hasErrors()) {
-    console.log("Finished running webpack with errors.");
-    info.errors.forEach((e) => console.error(e));
-    process.exit(1);
-  } else {
-    console.log("Finished running webpack.");
-  }
-};
+    if (stats.hasErrors()) {
+      console.log("Finished running webpack with errors...");
+      info.errors.forEach((e) => console.error(e));
+      process.exit(1);
+    } else {
+      console.log("Finished running webpack...");
+    }
+  };
 
-webpack(
-  {
-    entry: path.join(srcPath, "index.ts"),
-    mode: isProduction ? "production" : "development",
-    target: "node",
-    devtool: "inline-source-map",
-    module: {
-      rules: [
-        {
-          test: /\.css$/i,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-            },
-            {
-              loader: "css-loader",
-              options: {
-                esModule: true,
-                modules: {
-                  namedExport: true,
+  webpack(
+    {
+      entry: path.join(srcPath, "index.ts"),
+      mode: isProduction ? "production" : "development",
+      target: "node",
+      devtool: "inline-source-map",
+      module: {
+        rules: [
+          {
+            test: /\.css$/i,
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader,
+              },
+              {
+                loader: "css-loader",
+                options: {
+                  esModule: true,
+                  modules: {
+                    namedExport: true,
+                  },
                 },
               },
-            },
-          ],
-        },
-        {
-          test: /\.([jt]sx?)?$/,
-          use: { loader: "swc-loader" },
-          exclude: /node_modules/,
-        },
+            ],
+          },
+          {
+            test: /\.([jt]sx?)?$/,
+            use: { loader: "swc-loader" },
+            exclude: /node_modules/,
+          },
+        ],
+      },
+      resolve: {
+        extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
+      },
+      output: {
+        filename: "index.js",
+        path: distPath,
+      },
+      plugins: [
+        new MiniCssExtractPlugin({
+          insert: function (linkTag) {
+            console.log(linkTag);
+          },
+        }),
+        new NodePolyfillPlugin(),
       ],
-    },
-    resolve: {
-      extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
-    },
-    output: {
-      filename: "index.js",
-      path: distPath,
-    },
-    plugins: [
-      new MiniCssExtractPlugin({
-        insert: function (linkTag) {
-          console.log(linkTag);
-        },
-      }),
-      new NodePolyfillPlugin(),
-    ],
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: "public/styles",
-            type: "css/mini-extract",
-            chunks: "all",
-            enforce: true,
+      optimization: {
+        splitChunks: {
+          cacheGroups: {
+            styles: {
+              name: "public/styles",
+              type: "css/mini-extract",
+              chunks: "all",
+              enforce: true,
+            },
           },
         },
       },
     },
-  },
-  webpackCb
-);
+    webpackCb
+  );
+}
