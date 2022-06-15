@@ -17,9 +17,7 @@ export default ({ children, css }: Record<any, any>): JSX.Element => (
       <link rel="icon" href="/icon.svg" type="image/svg+xml" />
       <link rel="apple-touch-icon" href="icon.png" />
 
-      <link rel="stylesheet" href="index.css" />
-      
-      <style>{css}</style>
+      <link rel="stylesheet" type="text/css" href="styles.css" />
 
       <link rel="manifest" href="nosaj.webmanifest" />
       <meta name="theme-color" content="#fafafa" />

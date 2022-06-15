@@ -1,5 +1,3 @@
-import { extractCss } from "goober";
-import "./styles/globals.css";
 
 export const views = {
   async _document(props: Record<any, any>) {
@@ -19,8 +17,7 @@ export async function jsx(
 ) {
   const renderFile = async () => {
     const body = await views[view](options ?? {});
-    const css = extractCss();
-    const doc = await views._document({ css, children: body });
+    const doc = await views._document({ css: "", children: body });
     return doc.outerHTML;
   };
 

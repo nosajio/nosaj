@@ -1,25 +1,95 @@
-const esbuild = require("esbuild");
-const nativeNodeModulesPlugin = require("./esbuildAddonLoader");
+const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const webpack = require("webpack");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+const rimraf = require("rimraf");
 
-build();
+const distPath = path.resolve(__dirname, "..", "dist");
+const srcPath = path.resolve(__dirname, "..", "src");
+const isProduction = process.env.NODE_ENV === "production";
+const isDev = !isProduction;
 
-function catchBuildError(err) {
-  console.error(err);
-  process.exit(1);
-}
+rimraf.sync(distPath);
 
-function build() {
-  const outdir = "dist";
-  require("./copyPublic")();
+const webpackCb = (err, stats) => {
+  if (err) {
+    console.error(err.stack || err);
+    if (err.details) {
+      console.error(err.details);
+    }
+    process.exit(1);
+    return;
+  }
+  const info = stats.toJson();
 
-  // Build the TS and TSX files
-  esbuild
-    .build({
-      entryPoints: ["src/index.ts"],
-      bundle: true,
-      platform: "node",
-      plugins: [nativeNodeModulesPlugin],
-      outdir,
-    })
-    .catch(catchBuildError);
-}
+  if (stats.hasErrors()) {
+    console.log("Finished running webpack with errors.");
+    info.errors.forEach((e) => console.error(e));
+    process.exit(1);
+  } else {
+    console.log("Finished running webpack.");
+  }
+};
+
+webpack(
+  {
+    entry: path.join(srcPath, "index.ts"),
+    mode: isProduction ? "production" : "development",
+    target: "node",
+    devtool: "inline-source-map",
+    module: {
+      rules: [
+        {
+          test: /\.css$/i,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+            },
+            {
+              loader: "css-loader",
+              options: {
+                esModule: true,
+                modules: {
+                  namedExport: true,
+                },
+              },
+            },
+          ],
+        },
+        {
+          test: /\.([jt]sx?)?$/,
+          use: { loader: "swc-loader" },
+          exclude: /node_modules/,
+        },
+      ],
+    },
+    resolve: {
+      extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
+    },
+    output: {
+      filename: "index.js",
+      path: distPath,
+    },
+    plugins: [
+      new MiniCssExtractPlugin({
+        insert: function (linkTag) {
+          console.log(linkTag);
+        },
+      }),
+      new NodePolyfillPlugin(),
+    ],
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: "public/styles",
+            type: "css/mini-extract",
+            chunks: "all",
+            enforce: true,
+          },
+        },
+      },
+    },
+  },
+  webpackCb
+);

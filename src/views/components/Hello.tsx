@@ -1,6 +1,6 @@
 import h from "hyperscript";
-import "./styles.css";
+import * as s from "./hello.css";
 
 export default (props: Record<any, any>) => (
-  <h1 className="hi">Hello {props.name}!</h1>
+  <h1 className={s.hi}>Hello {props.name}!</h1>
 );
