@@ -47,7 +47,7 @@ function build() {
       module: {
         rules: [
           {
-            test: /\.css$/i,
+            test: /\.(s?)css$/i,
             use: [
               {
                 loader: MiniCssExtractPlugin.loader,
@@ -61,6 +61,7 @@ function build() {
                   },
                 },
               },
+              "sass-loader"
             ],
           },
           {

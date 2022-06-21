@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import * as render from "./render";
-import "./styles/globals.css";
+import "./styles/globals.scss";
 
 const PORT = process.env?.PORT ?? 8080;
 const server = express();
