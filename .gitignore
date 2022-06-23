@@ -4,3 +4,5 @@ node_modules
 dist
 .pnpm-debug.*
 .DS_Store
+
+data_rs/target
