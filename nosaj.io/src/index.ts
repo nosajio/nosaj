@@ -1,6 +1,5 @@
 import express from "express";
 import path from "path";
-import { view } from "./render";
 import "./styles/globals.scss";
 import { home, _document } from "./views";
 
@@ -22,13 +21,14 @@ async function start() {
 // Fallthrough middleware to serve files like css from the public dir
 server.use(express.static(path.join(__dirname, "public")));
 
+// Home / default route
 server.get("/", (_req, res) => {
   const page = _document({ children: home() });
   res.end(page.outerHTML);
 });
 
+// Read post route
 server.get("/r/:slug", (req, res) => {
   const slug = req.params.slug;
-  console.log(slug);
   res.end(_document({ children: slug }).outerHTML);
 });

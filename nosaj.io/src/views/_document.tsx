@@ -19,7 +19,6 @@ export const _document = ({ children }: Record<any, any>): JSX.Element => (
 
       <link rel="stylesheet" type="text/css" href="/styles.css" />
 
-      <link rel="manifest" href="nosaj.webmanifest" />
       <meta name="theme-color" content="#fafafa" />
     </head>
     <body>{children}</body>

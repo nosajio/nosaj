@@ -13,5 +13,6 @@
     "jsx": "preserve",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment"
-  }
+  },
+  "exclude": ["dist", "scripts"]
 }
