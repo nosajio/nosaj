@@ -13,9 +13,27 @@ type Config struct {
 	PG_DATABASE string
 	PG_HOST     string
 
+	OPS_TABLE_NAME   string
 	POSTS_TABLE_NAME string
 
 	WEB_API_KEY string
+
+	POSTS_REPO string
+}
+
+type AppEnv string
+
+const (
+	Production  AppEnv = "PRODUCTION"
+	Development AppEnv = "DEVELOPMENT"
+)
+
+func GetEnv() AppEnv {
+	e := os.Getenv("APP_ENV")
+	if e == "PRODUCTION" {
+		return Production
+	}
+	return Development
 }
 
 func InitConfig() {
@@ -33,7 +51,9 @@ func GetConfig() Config {
 		PG_DATABASE:      os.Getenv("PG_DATABASE"),
 		PG_HOST:          os.Getenv("PG_HOST"),
 		POSTS_TABLE_NAME: os.Getenv("POSTS_TABLE_NAME"),
+		OPS_TABLE_NAME:   os.Getenv("OPS_TABLE_NAME"),
 		WEB_API_KEY:      os.Getenv("WEB_API_KEY"),
+		POSTS_REPO:       os.Getenv("POSTS_REPO"),
 	}
 
 	return config
