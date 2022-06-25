@@ -17,7 +17,7 @@ type PostMetadata struct {
 	Slug      string `yaml:"slug"`
 }
 
-func ParseFile(body []byte) (*PostMetadata, []byte, error) {
+func ParseFile(body []byte) (*PostMetadata, []byte, []byte, error) {
 	hasFrontmatter := strings.HasPrefix(string(body), "---")
 
 	if hasFrontmatter {
@@ -26,7 +26,7 @@ func ParseFile(body []byte) (*PostMetadata, []byte, error) {
 		rest, err := frontmatter.Parse(bytes.NewReader(body), &matter)
 		if err != nil {
 			fmt.Println(err)
-			return nil, nil, errors.New("frontmatter can't be parsed")
+			return nil, nil, nil, errors.New("frontmatter can't be parsed")
 		}
 
 		if len(matter.Title) == 0 {
@@ -40,9 +40,9 @@ func ParseFile(body []byte) (*PostMetadata, []byte, error) {
 		}
 
 		html := markdown.ToHTML(rest, nil, nil)
-		return &matter, html, nil
+		return &matter, html, rest, nil
 	} else {
 		html := markdown.ToHTML(body, nil, nil)
-		return &PostMetadata{}, html, nil
+		return &PostMetadata{}, html, body, nil
 	}
 }

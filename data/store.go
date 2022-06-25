@@ -1,7 +1,9 @@
 package main
 
 import (
+	"crypto/sha256"
 	"database/sql"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 
@@ -46,17 +48,103 @@ func (s *Store) SaveOp(op *Operation) error {
 	return err
 }
 
-// func (s *Store) StorePost(body []byte, meta PostMetadata) error {
+func (s *Store) getCurrentPostId(slug string) int {
+	if slug == "" {
+		return -1
+	}
 
-// }
+	var id int
 
-type OpProcessing struct {
-	Processed []string `json:"processed"`
-	Failed    []string `json:"failed"`
+	err := s.DB.QueryRow(`
+		select id from nosaj.posts where slug = $1
+	`, slug).Scan(&id)
+
+	if err != nil {
+		fmt.Println(err)
+		return -1
+	}
+
+	return id
+}
+
+func (s *Store) StorePost(html []byte, markdown []byte, filename string, meta PostMetadata) error {
+	title := meta.Title
+	cover := meta.Cover
+	slug := meta.Slug
+	hash := sha256.Sum256(markdown)
+	pubdate := meta.Published
+	currentId := s.getCurrentPostId(slug)
+
+	if currentId > -1 {
+		// Update
+		s.DB.Exec(`
+			update nosaj.posts set 
+			title = $2, slug = $3, cover = $4, publish_date = $5, markdown = $6, html = $7, file_name = $8, file_hash = $9, metadata = $10
+			where id = $1
+		`,
+			currentId,
+			title,
+			slug,
+			cover,
+			pubdate,
+			string(markdown),
+			string(html),
+			filename,
+			hex.EncodeToString(hash[:]),
+			postMetadataJSON(&meta),
+		)
+	} else {
+		// Insert
+		s.DB.Exec(`
+			insert into nosaj.posts (title, slug, cover, publish_date, markdown, html, file_name, file_hash, metadata) 
+			values ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+		`,
+			title,
+			slug,
+			cover,
+			pubdate,
+			string(markdown),
+			string(html),
+			filename,
+			hex.EncodeToString(hash[:]),
+			postMetadataJSON(&meta),
+		)
+	}
+
+	fmt.Printf("%s, %s, %s, %s, %s, %v", title, slug, cover, filename, hex.EncodeToString(hash[:]), meta)
+	return nil
+}
+
+func postMetadataJSON(m *PostMetadata) string {
+	type PostMetaJSON struct {
+		Cover     string `json:"cover"`
+		Slug      string `json:"slug"`
+		Title     string `json:"title"`
+		Published string `json:"published"`
+	}
+
+	b, err := json.Marshal(PostMetaJSON{
+		Cover:     m.Cover,
+		Slug:      m.Slug,
+		Title:     m.Title,
+		Published: m.Published,
+	})
+
+	if err != nil {
+		fmt.Println(err)
+		return "{}"
+	}
+
+	return string(b)
 }
 
 func opsMetadataJSON(op *Operation) string {
-	b, err := json.Marshal(OpProcessing{
+	type OpProcessingJSON struct {
+		Processed []string `json:"processed"`
+		Failed    []string `json:"failed"`
+	}
+
+	b, err := json.Marshal(OpProcessingJSON{
 		Processed: op.processedFiles,
 		Failed:    op.failedFiles,
 	})

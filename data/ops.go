@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type OpStatus string
 
@@ -45,11 +48,23 @@ func (op *Operation) GetPostFiles(from string, to string) {
 	op.commitHash = commitHash
 }
 
+func getFilenameFromPath(path string) string {
+	lastSlash := strings.LastIndex(path, "/")
+	if lastSlash == -1 {
+		return path
+	}
+	if path[lastSlash:lastSlash+1] == "/" {
+		lastSlash = lastSlash + 1
+	}
+	return path[lastSlash:]
+}
+
 func (op *Operation) Ingest(dir string) {
 	files := op.FilterFiles(dir, "*.md")
 
 	for _, f := range files {
 		b, err := op.ReadFile(f)
+		filename := getFilenameFromPath(f)
 
 		// Handle failed read
 		if err != nil {
@@ -58,15 +73,15 @@ func (op *Operation) Ingest(dir string) {
 			continue
 		}
 
-		fm, html, err := ParseFile(b)
+		fm, html, md, err := ParseFile(b)
 		if err != nil {
 			fmt.Printf("failed to parse file: %s", f)
 			op.failedFiles = append(op.failedFiles, f)
 			continue
 		}
-		fmt.Printf("%v, %s", fm, string(html[0:2]))
 
 		op.processedFiles = append(op.processedFiles, f)
+		op.store.StorePost(html, md, filename, *fm)
 	}
 }
 
