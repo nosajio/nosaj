@@ -10,26 +10,39 @@ import (
 	"github.com/gomarkdown/markdown"
 )
 
-type KnownFrontmatter struct {
+type PostMetadata struct {
 	Title     string `yaml:"title"`
-	Cover     string `yaml:"cover"`
+	Cover     string `yaml:"cover"` // optional
 	Published string `yaml:"published"`
+	Slug      string `yaml:"slug"`
 }
 
-func ParseFile(body []byte) (*KnownFrontmatter, []byte, error) {
+func ParseFile(body []byte) (*PostMetadata, []byte, error) {
 	hasFrontmatter := strings.HasPrefix(string(body), "---")
 
 	if hasFrontmatter {
-		var matter KnownFrontmatter
+		var matter PostMetadata
+
 		rest, err := frontmatter.Parse(bytes.NewReader(body), &matter)
 		if err != nil {
 			fmt.Println(err)
 			return nil, nil, errors.New("frontmatter can't be parsed")
 		}
+
+		if len(matter.Title) == 0 {
+			fmt.Printf("missing title in post %s", string(body)[0:30])
+		}
+		if len(matter.Published) == 0 {
+			fmt.Printf("missing publish date in post %s", matter.Title)
+		}
+		if len(matter.Slug) == 0 {
+			fmt.Printf("missing slug in post %s", matter.Title)
+		}
+
 		html := markdown.ToHTML(rest, nil, nil)
 		return &matter, html, nil
 	} else {
 		html := markdown.ToHTML(body, nil, nil)
-		return &KnownFrontmatter{}, html, nil
+		return &PostMetadata{}, html, nil
 	}
 }

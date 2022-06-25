@@ -10,9 +10,10 @@ const (
 	Completed OpStatus = "COMPLETED"
 )
 
-type operation struct {
+type Operation struct {
 	FileSystem
-	ts             int64
+	store          Store
+	ts             string
 	status         OpStatus
 	commitHash     string
 	processedFiles []string
@@ -20,7 +21,14 @@ type operation struct {
 	// changedFilesCount int
 }
 
-func (op *operation) GetPostFiles(from string, to string) {
+func (op *Operation) Init(config *Config) error {
+	if err := op.store.Connect(config); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (op *Operation) GetPostFiles(from string, to string) {
 	repo := PostsRepo{
 		Path: to,
 		Url:  from,
@@ -37,7 +45,7 @@ func (op *operation) GetPostFiles(from string, to string) {
 	op.commitHash = commitHash
 }
 
-func (op *operation) Ingest(dir string) {
+func (op *Operation) Ingest(dir string) {
 	files := op.FilterFiles(dir, "*.md")
 
 	for _, f := range files {
@@ -56,14 +64,24 @@ func (op *operation) Ingest(dir string) {
 			op.failedFiles = append(op.failedFiles, f)
 			continue
 		}
-		fmt.Printf("%v", fm)
-		fmt.Println(string(html))
+		fmt.Printf("%v, %s", fm, string(html[0:2]))
 
+		op.processedFiles = append(op.processedFiles, f)
 	}
-
 }
 
-func (op *operation) isError(e error) {
+func (op *Operation) Finish() {
+	defer op.store.DB.Close()
+	op.status = Completed
+	if err := op.store.SaveOp(op); err != nil {
+		fmt.Println(err)
+		fmt.Println("error saving operation to db")
+	}
+
+	fmt.Printf("ingest completed with no issues. processed: %d, failed: %d", len(op.processedFiles), len(op.failedFiles))
+}
+
+func (op *Operation) isError(e error) {
 	op.status = Error
 	fmt.Println(e)
 }
