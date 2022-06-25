@@ -28,4 +28,7 @@ func main() {
 	op.Ingest(filesPath)
 	op.Finish()
 
+	// Listen for signals over http
+	api := API{}
+	api.Init()
 }
