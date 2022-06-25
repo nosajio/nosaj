@@ -51,7 +51,7 @@ func (repo *PostsRepo) Clone() error {
 	return nil
 }
 
-func (repo *PostsRepo) CommitDetails() (string, int, error) {
+func (repo *PostsRepo) CommitDetails() (string, error) {
 	r := repo.Repo
 	r.Branch("master")
 	fmt.Printf("%v", repo.Repo)
@@ -59,10 +59,10 @@ func (repo *PostsRepo) CommitDetails() (string, int, error) {
 	ref, err := r.Head()
 	if err != nil {
 		fmt.Println(err)
-		return "", 0, errors.New("cannot get the repo's HEAD state")
+		return "", errors.New("cannot get the repo's HEAD state")
 	}
 
 	repo.LastHash = ref.Hash().String()
 
-	return repo.LastHash, 0, nil
+	return repo.LastHash, nil
 }

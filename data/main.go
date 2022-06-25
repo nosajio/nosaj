@@ -21,10 +21,9 @@ func main() {
 		status: Running,
 	}
 
-	op.Checkout(config.POSTS_REPO, filesPath)
-	op.Ingest(filesPath)
+	defer op.Cleanup(filesPath)
 
-	// Delete the checked out posts dir, don't leave a trace
-	op.Cleanup(filesPath)
+	op.GetPostFiles(config.POSTS_REPO, filesPath)
+	op.Ingest(filesPath)
 
 }
