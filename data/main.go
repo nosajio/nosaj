@@ -1,9 +1,5 @@
 package main
 
-import (
-	"time"
-)
-
 func main() {
 	appEnv := GetEnv()
 
@@ -14,24 +10,9 @@ func main() {
 	}
 	config := GetConfig()
 
-	const filesPath = "/tmp/posts"
-
-	op := Operation{
-		ts:     time.Now().UTC().Format("2006-01-02T15:04:05-0700"),
-		status: Running,
-	}
-
-	defer op.Cleanup(filesPath)
-
-	op.Init(&config)
-	op.GetPostFiles(config.POSTS_REPO, filesPath)
-	op.Ingest(filesPath)
-	op.Finish()
-
 	// Listen for signals over http
 	api := API{
-		Port:  config.WEB_PORT,
-		Token: config.WEB_API_KEY,
+		Config: &config,
 	}
 	api.Init()
 }
