@@ -29,6 +29,9 @@ func main() {
 	op.Finish()
 
 	// Listen for signals over http
-	api := API{}
+	api := API{
+		Port:  config.WEB_PORT,
+		Token: config.WEB_API_KEY,
+	}
 	api.Init()
 }

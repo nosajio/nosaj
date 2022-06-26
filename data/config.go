@@ -17,6 +17,7 @@ type Config struct {
 	POSTS_TABLE_NAME string
 
 	WEB_API_KEY string
+	WEB_PORT    string
 
 	POSTS_REPO string
 }
@@ -53,6 +54,7 @@ func GetConfig() Config {
 		POSTS_TABLE_NAME: os.Getenv("POSTS_TABLE_NAME"),
 		OPS_TABLE_NAME:   os.Getenv("OPS_TABLE_NAME"),
 		WEB_API_KEY:      os.Getenv("WEB_API_KEY"),
+		WEB_PORT:         os.Getenv("WEB_PORT"),
 		POSTS_REPO:       os.Getenv("POSTS_REPO"),
 	}
 
