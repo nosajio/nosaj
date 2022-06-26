@@ -70,7 +70,6 @@ func (api *API) Init() {
 	})
 
 	r.Run(fmt.Sprintf(":%s", port))
-	fmt.Printf("api started @ http://localhost:%s", port)
 }
 
 func handleSyncOperation(config *Config) *Operation {

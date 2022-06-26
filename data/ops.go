@@ -92,8 +92,6 @@ func (op *Operation) Finish() {
 		fmt.Println(err)
 		fmt.Println("error saving operation to db")
 	}
-
-	fmt.Printf("ingest completed with no issues. processed: %d, failed: %d", len(op.processedFiles), len(op.failedFiles))
 }
 
 func (op *Operation) isError(e error) {
