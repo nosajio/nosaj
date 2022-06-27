@@ -1,19 +1,18 @@
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const webpack = require("webpack");
-const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
-const rimraf = require("rimraf");
-const copyPublicDir = require("./copyPublic");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack');
+const rimraf = require('rimraf');
+const copyPublicDir = require('./copyPublic');
 
-const distPath = path.resolve(__dirname, "..", "dist");
-const srcPath = path.resolve(__dirname, "..", "src");
-const isProduction = process.env.NODE_ENV === "production";
+const distPath = path.resolve(__dirname, '..', 'dist');
+const srcPath = path.resolve(__dirname, '..', 'src');
+const isProduction = process.env.NODE_ENV === 'production';
 const isDev = !isProduction;
 
 rimraf.sync(distPath);
 
 copyPublicDir().then(() => {
-  console.log("Copied public files...");
+  console.log('Copied public files...');
   build();
 });
 
@@ -30,20 +29,20 @@ function build() {
     const info = stats.toJson();
 
     if (stats.hasErrors()) {
-      console.log("Finished running webpack with errors...");
-      info.errors.forEach((e) => console.error(e));
+      console.log('Finished running webpack with errors...');
+      info.errors.forEach(e => console.error(e));
       process.exit(1);
     } else {
-      console.log("Finished running webpack...");
+      console.log('Finished running webpack...');
     }
   };
 
   webpack(
     {
-      entry: path.join(srcPath, "index.ts"),
-      mode: isProduction ? "production" : "development",
-      target: "node",
-      devtool: "inline-source-map",
+      entry: path.join(srcPath, 'index.ts'),
+      mode: isProduction ? 'production' : 'development',
+      target: 'node',
+      devtool: 'inline-source-map',
       module: {
         rules: [
           {
@@ -53,7 +52,7 @@ function build() {
                 loader: MiniCssExtractPlugin.loader,
               },
               {
-                loader: "css-loader",
+                loader: 'css-loader',
                 options: {
                   esModule: true,
                   modules: {
@@ -61,44 +60,44 @@ function build() {
                   },
                 },
               },
-              "sass-loader"
+              'sass-loader',
             ],
           },
           {
             test: /\.([jt]sx?)?$/,
-            use: { loader: "swc-loader" },
+            use: { loader: 'swc-loader' },
             exclude: /node_modules/,
           },
         ],
       },
       resolve: {
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.css'],
       },
       output: {
-        filename: "index.js",
+        filename: 'index.js',
         path: distPath,
       },
       plugins: [
+        new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ }),
         new MiniCssExtractPlugin({
           insert: function (linkTag) {
             console.log(linkTag);
           },
         }),
-        new NodePolyfillPlugin(),
       ],
       optimization: {
         splitChunks: {
           cacheGroups: {
             styles: {
-              name: "public/styles",
-              type: "css/mini-extract",
-              chunks: "all",
+              name: 'public/styles',
+              type: 'css/mini-extract',
+              chunks: 'all',
               enforce: true,
             },
           },
         },
       },
     },
-    webpackCb
+    webpackCb,
   );
 }
