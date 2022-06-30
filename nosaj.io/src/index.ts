@@ -3,7 +3,7 @@ import path from 'path';
 import { getPost } from './blog';
 import * as db from './db';
 import './styles/globals.scss';
-import { DEV, injectHTMLAtSelector } from './utils';
+import { DEV, injectHTMLAtSelector, renderPage } from './utils';
 import { home, post, _document } from './views';
 
 if (DEV) {
@@ -39,8 +39,15 @@ server.get('/', (_req, res) => {
 server.get('/r/:slug', async (req, res) => {
   const slug = req.params.slug;
   const postData = await getPost(slug);
-  const postEl = post({ post: postData! });
-  const page = _document({ children: postEl });
-  const injected = injectHTMLAtSelector(page, 'section#html', postData?.html ?? '');
+  if (!postData) {
+    res.status(404).end('forohfor');
+    return;
+  }
+  const page = renderPage(post, { post: postData });
+  const injected = injectHTMLAtSelector(
+    page,
+    'section#html',
+    postData?.html ?? '',
+  );
   res.end(injected.documentElement.outerHTML);
 });

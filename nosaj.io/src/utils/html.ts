@@ -1,4 +1,5 @@
 import { JSDOM } from 'jsdom';
+import { _document } from '../views';
 
 export function injectHTMLAtSelector(
   document: HTMLElement,
@@ -11,4 +12,10 @@ export function injectHTMLAtSelector(
     qel.innerHTML = html;
   }
   return domEl.window.document;
+}
+
+export function renderPage(page: (...args: any) => JSX.Element, props: Parameters<typeof page>) {
+  const ch = page(props);
+  const doc = _document({ children: ch });
+  return doc;
 }
