@@ -11,8 +11,11 @@
         "pragma": "h",
         "pragmaFrag": "Fragment"
       }
-    },
-    "target": "es2020",
-    "loose": false
+    }
+  },
+  "env": {
+    "targets": {
+      "node": "16"
+    }
   }
 }

@@ -1,7 +1,14 @@
-import express from "express";
-import path from "path";
-import "./styles/globals.scss";
-import { home, _document } from "./views";
+import express from 'express';
+import path from 'path';
+import { getPost } from './blog';
+import * as db from './db';
+import './styles/globals.scss';
+import { DEV, injectHTMLAtSelector } from './utils';
+import { home, post, _document } from './views';
+
+if (DEV) {
+  require('dotenv').config();
+}
 
 const PORT = process.env?.PORT ?? 8080;
 const server = express();
@@ -9,8 +16,9 @@ const server = express();
 start();
 
 async function start() {
-  console.log("Start server on port %s", PORT);
+  console.log('Start server on port %s', PORT);
   try {
+    db.connect();
     server.listen(PORT);
   } catch (err) {
     console.error(err);
@@ -19,16 +27,20 @@ async function start() {
 }
 
 // Fallthrough middleware to serve files like css from the public dir
-server.use(express.static(path.join(__dirname, "public")));
+server.use(express.static(path.join(__dirname, 'public')));
 
 // Home / default route
-server.get("/", (_req, res) => {
+server.get('/', (_req, res) => {
   const page = _document({ children: home() });
   res.end(page.outerHTML);
 });
 
 // Read post route
-server.get("/r/:slug", (req, res) => {
+server.get('/r/:slug', async (req, res) => {
   const slug = req.params.slug;
-  res.end(_document({ children: slug }).outerHTML);
+  const postData = await getPost(slug);
+  const postEl = post({ post: postData! });
+  const page = _document({ children: postEl });
+  const injected = injectHTMLAtSelector(page, 'section#html', postData?.html ?? '');
+  res.end(injected.documentElement.outerHTML);
 });

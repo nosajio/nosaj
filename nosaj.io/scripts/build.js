@@ -79,6 +79,7 @@ function build() {
       },
       plugins: [
         new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ }),
+        new webpack.IgnorePlugin({ resourceRegExp: /^canvas$/ }),
         new MiniCssExtractPlugin({
           insert: function (linkTag) {
             console.log(linkTag);
