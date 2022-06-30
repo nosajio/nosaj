@@ -1,0 +1,6 @@
+@use './fns/ms.scss' as ms;
+
+.container {
+  padding-left: ms.rem(3);
+  padding-right: ms.rem(3);
+}

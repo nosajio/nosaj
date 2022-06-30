@@ -1,0 +1,17 @@
+@use '../vars.scss' as v;
+
+@function _($step) {
+  $n: 1;
+  @for $i from 1 through $step {
+    $n: $n * v.$scale;
+  }
+  @return $n;
+}
+
+@function rem($step) {
+  @return _($step) * 1rem;
+}
+
+@function px($step) {
+  @return _($step) * v.$font-size;
+}

@@ -46,17 +46,7 @@ function build() {
       module: {
         rules: [
           {
-            test: /\.(woff2?|ttf|otf|eot|svg)$/,
-            exclude: /node_modules/,
-            loader: 'file-loader',
-            options: {
-              outputPath: 'public',
-              publicPath: '/',
-              name: '[hash].[ext]',
-            },
-          },
-          {
-            test: /\.(s?)css$/i,
+            test: /\.s[ac]ss$/i,
             use: [
               {
                 loader: MiniCssExtractPlugin.loader,
@@ -78,6 +68,16 @@ function build() {
             test: /\.([jt]s?)?$/,
             use: { loader: 'swc-loader' },
             exclude: /node_modules/,
+          },
+          {
+            test: /\.(woff2?|ttf|otf|eot|svg)$/,
+            exclude: /node_modules/,
+            loader: 'file-loader',
+            options: {
+              outputPath: 'public',
+              publicPath: '/',
+              name: '[hash].[ext]',
+            },
           },
         ],
       },
