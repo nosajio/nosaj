@@ -48,16 +48,18 @@ func (s *Store) SaveOp(op *Operation) error {
 	return err
 }
 
-func (s *Store) getCurrentPostId(slug string) int {
-	if slug == "" {
+// getCurrentPostId attempts to find the current post if it exists in the
+// database. The fn prefers filename, and will fallback to searching on slug
+func (s *Store) getCurrentPostId(filename string, slug string) int {
+	if filename == "" {
 		return -1
 	}
 
 	var id int
 
 	err := s.DB.QueryRow(`
-		select id from nosaj.posts where slug = $1
-	`, slug).Scan(&id)
+		select id from nosaj.posts where file_name = $1 or slug = $2
+	`, filename, slug).Scan(&id)
 
 	if err != nil {
 		fmt.Println(err)
@@ -73,7 +75,7 @@ func (s *Store) StorePost(html []byte, markdown []byte, filename string, meta Po
 	slug := meta.Slug
 	hash := sha256.Sum256(markdown)
 	pubdate := meta.Published
-	currentId := s.getCurrentPostId(slug)
+	currentId := s.getCurrentPostId(filename, slug)
 
 	if currentId > -1 {
 		// Update
