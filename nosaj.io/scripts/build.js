@@ -42,9 +42,19 @@ function build() {
       entry: path.join(srcPath, 'index.ts'),
       mode: isProduction ? 'production' : 'development',
       target: 'node',
-      devtool: 'inline-source-map',
+      // devtool: 'inline-source-map',
       module: {
         rules: [
+          {
+            test: /\.(woff2?|ttf|otf|eot|svg)$/,
+            exclude: /node_modules/,
+            loader: 'file-loader',
+            options: {
+              outputPath: 'public',
+              publicPath: '/',
+              name: '[hash].[ext]',
+            },
+          },
           {
             test: /\.(s?)css$/i,
             use: [
@@ -54,13 +64,14 @@ function build() {
               {
                 loader: 'css-loader',
                 options: {
-                  esModule: true,
-                  modules: {
-                    namedExport: true,
-                  },
+                  esModule: false,
                 },
               },
-              'sass-loader',
+              { loader: 'resolve-url-loader' },
+              {
+                loader: 'sass-loader',
+                options: { sourceMap: true },
+              },
             ],
           },
           {

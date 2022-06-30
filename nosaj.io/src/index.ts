@@ -31,7 +31,9 @@ server.use(express.static(path.join(__dirname, 'public')));
 
 // Home / default route
 server.get('/', async (_req, res) => {
-  const page = await ejs.renderFile('src/views/home.ejs');
+  const page = await ejs.renderFile('src/views/home.ejs', {
+    page: { title: '🤙' },
+  });
   res.end(page);
 });
 
@@ -43,6 +45,9 @@ server.get('/r/:slug', async (req, res) => {
     res.status(404).end('forohfor');
     return;
   }
-  const page = await ejs.renderFile('src/views/post.ejs', { ...postData });
+  const page = await ejs.renderFile('src/views/post.ejs', {
+    ...postData,
+    page: { title: postData.title },
+  });
   res.end(page);
 });
