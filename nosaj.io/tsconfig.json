@@ -8,11 +8,6 @@
     "skipLibCheck": true,                                /* Skip type checking all .d.ts files. */
     "moduleResolution": "node",
     "allowJs": true,
-
-    /* JSX transform */
-    "jsx": "preserve",
-    "jsxFactory": "h",
-    "jsxFragmentFactory": "Fragment"
   },
   "exclude": ["dist", "scripts"]
 }

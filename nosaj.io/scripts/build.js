@@ -64,14 +64,14 @@ function build() {
             ],
           },
           {
-            test: /\.([jt]sx?)?$/,
+            test: /\.([jt]s?)?$/,
             use: { loader: 'swc-loader' },
             exclude: /node_modules/,
           },
         ],
       },
       resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.css'],
+        extensions: ['.js', '.ts', '.css'],
       },
       output: {
         filename: 'index.js',
@@ -79,7 +79,6 @@ function build() {
       },
       plugins: [
         new webpack.IgnorePlugin({ resourceRegExp: /^pg-native$/ }),
-        new webpack.IgnorePlugin({ resourceRegExp: /^canvas$/ }),
         new MiniCssExtractPlugin({
           insert: function (linkTag) {
             console.log(linkTag);

@@ -1,10 +1,10 @@
+import ejs from 'ejs';
 import express from 'express';
 import path from 'path';
 import { getPost } from './blog';
 import * as db from './db';
 import './styles/globals.scss';
-import { DEV, injectHTMLAtSelector, renderPage } from './utils';
-import { home, post, _document } from './views';
+import { DEV } from './utils';
 
 if (DEV) {
   require('dotenv').config();
@@ -30,9 +30,9 @@ async function start() {
 server.use(express.static(path.join(__dirname, 'public')));
 
 // Home / default route
-server.get('/', (_req, res) => {
-  const page = _document({ children: home() });
-  res.end(page.outerHTML);
+server.get('/', async (_req, res) => {
+  const page = await ejs.renderFile('src/views/home.ejs');
+  res.end(page);
 });
 
 // Read post route
@@ -43,11 +43,6 @@ server.get('/r/:slug', async (req, res) => {
     res.status(404).end('forohfor');
     return;
   }
-  const page = renderPage(post, { post: postData });
-  const injected = injectHTMLAtSelector(
-    page,
-    'section#html',
-    postData?.html ?? '',
-  );
-  res.end(injected.documentElement.outerHTML);
+  const page = await ejs.renderFile('src/views/post.ejs', { ...postData });
+  res.end(page);
 });
