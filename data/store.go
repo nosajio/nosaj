@@ -69,7 +69,7 @@ func (s *Store) getCurrentPostId(filename string, slug string) int {
 	return id
 }
 
-func (s *Store) StorePost(html []byte, markdown []byte, filename string, meta PostMetadata) error {
+func (s *Store) StorePost(html []byte, markdown []byte, filename string, sample string, meta PostMetadata) error {
 	title := meta.Title
 	cover := meta.Cover
 	slug := meta.Slug
@@ -81,7 +81,7 @@ func (s *Store) StorePost(html []byte, markdown []byte, filename string, meta Po
 		// Update
 		s.DB.Exec(`
 			update nosaj.posts set 
-			title = $2, slug = $3, cover = $4, publish_date = $5, markdown = $6, html = $7, file_name = $8, file_hash = $9, metadata = $10
+			title = $2, slug = $3, cover = $4, publish_date = $5, markdown = $6, html = $7, file_name = $8, file_hash = $9, post_sample = $10, metadata = $11
 			where id = $1
 		`,
 			currentId,
@@ -93,6 +93,7 @@ func (s *Store) StorePost(html []byte, markdown []byte, filename string, meta Po
 			string(html),
 			filename,
 			hex.EncodeToString(hash[:]),
+			sample,
 			postMetadataJSON(&meta),
 		)
 	} else {

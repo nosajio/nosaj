@@ -73,7 +73,7 @@ func (op *Operation) Ingest(dir string) {
 			continue
 		}
 
-		fm, html, md, err := ParseFile(b)
+		fm, html, md, sample, err := ParseFile(b)
 		if err != nil {
 			fmt.Printf("failed to parse file: %s", f)
 			op.failedFiles = append(op.failedFiles, f)
@@ -81,7 +81,7 @@ func (op *Operation) Ingest(dir string) {
 		}
 
 		op.processedFiles = append(op.processedFiles, f)
-		op.store.StorePost(html, md, filename, *fm)
+		op.store.StorePost(html, md, filename, sample, *fm)
 	}
 }
 
