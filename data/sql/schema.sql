@@ -14,6 +14,7 @@ CREATE TABLE
     markdown text NOT NULL,
     created_at timestamp without time zone NOT NULL DEFAULT now(),
     html text NOT NULL,
+    post_sample text NULL,
     cover text NULL
   );
 
