@@ -161,10 +161,9 @@
     margin: ms.rem(3) 0;
   }
 
-  /* Lists */
-
   /* Code blocks and inline */
   code {
+    color: var(--code-fg-color);
     font-family: var(--monospace);
     font-weight: var(--monospace-normal);
     font-size: 1rem;
@@ -173,7 +172,7 @@
   pre {
     border-radius: 3px;
     margin: 0;
-    background: var(--color-black-050);
+    background: var(--code-bg-color);
     padding: var(--content-padding);
     overflow-x: scroll;
     width: 100%;
@@ -181,7 +180,7 @@
 
   p code {
     border-radius: 3px;
-    background: var(--color-black-050);
+    background: var(--code-bg-color);
     padding: 0 ms.rem(-4);
   }
 }
