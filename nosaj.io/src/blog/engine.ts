@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { pool } from '../db';
 
 export interface BlogPost {
@@ -8,24 +9,37 @@ export interface BlogPost {
   publish_date: string;
   slug: string;
   html: string;
+  post_sample: string;
+}
+
+export interface AugmentedBlogPost extends BlogPost {
+  nice_date: string;
+}
+
+function augmentPost(post: BlogPost): AugmentedBlogPost {
+  const nice_date = format(new Date(post.publish_date), 'LLLL do');
+  return {
+    ...post,
+    nice_date,
+  };
 }
 
 export async function getAllPosts() {
   const res = await pool.query<BlogPost>(
-    'select id, created_at, title, metadata, publish_date, slug, html from nosaj.posts where publish_date < now()',
+    'select id, created_at, title, metadata, publish_date, slug, html, post_sample from nosaj.posts where publish_date < now() order by publish_date desc',
   );
-  return res.rows;
+  return res.rows.map(augmentPost);
 }
 
 export async function getPost(slug: string) {
   console.log(slug);
   const res = await pool.query<BlogPost>(
-    'select id, created_at, title, metadata, publish_date, slug, html from nosaj.posts where publish_date < now() and slug = $1',
+    'select id, created_at, title, metadata, publish_date, slug, html, post_sample from nosaj.posts where publish_date < now() and slug = $1 order by publish_date desc',
     [slug],
   );
   const emptyResult = res.rowCount === 0;
   if (emptyResult) {
     return undefined;
   }
-  return res.rows[0];
+  return augmentPost(res.rows[0]);
 }

@@ -2,8 +2,14 @@
 
 @function _($step) {
   $n: 1;
-  @for $i from 1 through $step {
-    $n: $n * v.$scale;
+  @if $step > 0 {
+    @for $i from 1 through $step {
+      $n: $n * v.$scale;
+    }
+  } @else {
+    @for $i from 1 through $step * -1 {
+      $n: $n / v.$scale;
+    }
   }
   @return $n;
 }

@@ -1,8 +1,80 @@
+@use '../../styles/fns/ms.scss' as ms;
+
+.post-header {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    'date'
+    'title';
+  row-gap: ms.rem(-1);
+
+  .post-title {
+    grid-area: title;
+    font-family: var(--sans-serif);
+    font-weight: var(--sans-serif-heavy);
+    margin: 0;
+  }
+}
+
+.post-date {
+  grid-area: date;
+  font-size: 1rem;
+  color: var(--color-black-700);
+}
+
+.post-outer .post {
+  padding-top: ms.rem(7);
+}
+
 .post {
+  color: var(--color-black-300);
+
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  blockquote {
+    margin: 0 0 ms.rem(-2);
+  }
+
   p,
   blockquote {
-    font-family: novela, 'Apple Garamond', 'Baskerville', 'Times New Roman',
-      'Droid Serif', 'Times', 'Source Serif Pro', serif;
-    font-weight: 400;
+    font-weight: var(--sans-serif-normal);
+    font-size: ms.rem(1);
+    line-height: 172%;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--text-color);
+    padding-left: ms.rem(3);
+  }
+
+  p {
+    margin: ms.rem(3) 0;
+  }
+
+  blockquote,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    & + p {
+      margin-top: 0;
+    }
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .content.image {
+    > img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
   }
 }

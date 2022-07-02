@@ -1,0 +1,61 @@
+@use './fns/ms.scss' as ms;
+
+.frag-list {
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: ms.rem(3);
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.frag-div {
+  width: 100%;
+  height: 2px;
+  background: var(--color-black-950);
+}
+
+.post-frag a {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    'date'
+    'title'
+    'sample';
+  row-gap: ms.rem(-1);
+}
+
+.post-frag-title {
+  grid-area: title;
+  font-size: ms.rem(2);
+  font-weight: var(--sans-serif-heavy);
+}
+
+.post-frag-date {
+  grid-area: date;
+  font-weight: 400;
+  color: var(--color-black-700);
+  font-size: ms.rem(-1);
+}
+
+.post-frag-sample {
+  display: block;
+
+  p {
+    margin: 0;
+  }
+}
+
+.read-on {
+  background: var(--color-black-950);
+  color: var(--color-black-300);
+  border-radius: 30px;
+  font-size: 14px;
+  padding: 9px 11px;
+  line-height: 100%;
+  justify-self: start;
+}

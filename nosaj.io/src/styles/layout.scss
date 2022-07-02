@@ -1,6 +1,46 @@
 @use './fns/ms.scss' as ms;
 
 .container {
+  width: 100%;
   padding-left: ms.rem(3);
   padding-right: ms.rem(3);
+
+  &.first {
+    padding-top: ms.rem(3);
+  }
+
+  &.surround {
+    padding-top: ms.rem(3);
+    padding-bottom: ms.rem(3);
+  }
+}
+
+.content-surface {
+  @extend .container;
+
+  max-width: 40.88rem;
+  padding: ms.rem(3);
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reading-bg {
+  background: var(--color-white);
+}
+
+.flex {
+  display: flex;
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.justify-space-between {
+    justify-content: space-between;
+  }
+
+  &.align-center {
+    align-items: center;
+  }
 }

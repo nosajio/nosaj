@@ -1,10 +1,20 @@
 <%- include('_header') -%>
-  <article class="container post">
-    <h1>
-      <%= title %>
-    </h1>
-    <section class="post-body">
-      <%- html %>
-    </section>
-  </article>
-  <%- include('_footer') -%>
+<main>
+  <%- include('_navbar') -%>
+    <div class="reading-bg post-outer">
+      <article class="content-surface post">
+        <header class="post-header">
+          <h1 class="post-title">
+            <%= title %>
+          </h1>
+          <div class="post-date">
+            <%= nice_date %> 
+          </div>
+        </header>
+        <section class="post-body">
+          <%- html %>
+        </section>
+      </article>
+    </div>
+</main>
+<%- include('_footer') -%>

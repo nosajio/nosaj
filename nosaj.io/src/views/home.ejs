@@ -1,9 +1,35 @@
 <%- include('_header') -%>
-<main class="page">
-  <%- include('_navbar') %> 
+  <main class="page">
+    <%- include('_navbar') %>
 
-  <section class="container">
-    Hi
-  </section>
+    <div class="container content-surface reading-bg">
+      <ul class="frag-list">
+        <% posts.forEach((p, i)=> { %>
+          <li>
+            <article class="post-frag">
+              <a href="/r/<%= p.slug %>">
+                <h2 class="post-frag-title">
+                  <%= p.title %>
+                </h2>
+                <span class="post-frag-date">
+                  <%= p.nice_date %>
+                </span>
+                <% if (p.post_sample) { %>
+                <span  class="post-frag-sample">
+                  <p>
+                    <%= p.post_sample %>
+                  </p>
+                </span>
+                <span class="read-on">Read on</span>
+                <% } %>
+              </a>
+            </article>
+          </li>
+          <% if (posts.length - 1 >= i + 1) { %>
+            <li class="frag-div"></li>
+          <% } %>
+        <% }) %>
+      </ul>
+    </div>
 </main>
 <%- include('_footer') -%>

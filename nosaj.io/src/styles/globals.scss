@@ -1,16 +1,69 @@
 @use './vars.scss' as v;
+@use './fns/ms.scss' as ms;
+
+:root {
+  --font-size: #{v.$font-size};
+  --line-height: 140%;
+
+  --color-black-100: hsl(227, 19%, 11%);
+  --color-black-200: hsl(227, 19%, 21%);
+  --color-black-300: hsl(227, 19%, 31%);
+  --color-black-400: hsl(227, 19%, 41%);
+  --color-black-500: hsl(227, 19%, 51%);
+  --color-black-600: hsl(227, 19%, 61%);
+  --color-black-700: hsl(227, 19%, 71%);
+  --color-black-800: hsl(227, 19%, 81%);
+  --color-black-900: hsl(227, 19%, 91%);
+  --color-black-950: hsl(227, 19%, 96%);
+
+  --color-blue-100: hsl(227, 88%, 10%);
+  --color-blue-200: hsl(227, 88%, 20%);
+  --color-blue-300: hsl(227, 88%, 30%);
+  --color-blue-400: hsl(227, 88%, 40%);
+  --color-blue-500: hsl(227, 88%, 50%);
+  --color-blue-600: hsl(227, 88%, 60%);
+  --color-blue-700: hsl(227, 88%, 70%);
+  --color-blue-800: hsl(227, 88%, 80%);
+  --color-blue-900: hsl(227, 88%, 90%);
+  --color-blue-950: hsl(227, 88%, 95%);
+
+  --color-white: hsl(225, 31%, 99%);
+  --text-color: var(--color-black-200);
+
+  // --serif: utopia-std, 'Apple Garamond', 'Baskerville', 'Times New Roman',
+  //   'Droid Serif', 'Times', 'Source Serif Pro', serif;
+  --sans-serif: trade-gothic-next, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol';
+
+  --sans-serif-normal: 300;
+  --sans-serif-bold: 400;
+  --sans-serif-heavy: 800;
+}
 
 :root,
 html,
 body {
-  font-size: v.$font-size;
+  font-size: var(--font-size);
+  background-color: #eef0f6;
 }
 
 body {
-  font-family: geomanist, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
+  font-family: var(--sans-serif);
   font-weight: 400;
+  color: var(--text-color);
+}
+
+a,
+a:visited {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 h1,
@@ -20,9 +73,21 @@ h4 {
   margin: 0;
 }
 
-h1 span,
-h2 span,
-h3 span,
-h4 span {
-  display: block;
+p {
+  line-height: var(--line-height);
+  font-family: var(--sans-serif);
+}
+
+/* Navigation */
+.navlist {
+  display: grid;
+  grid-auto-flow: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  column-gap: ms.rem(3);
+}
+
+.nosaj-svg path {
+  fill: var(--color-black-100);
 }

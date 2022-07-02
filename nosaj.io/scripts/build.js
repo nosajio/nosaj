@@ -23,7 +23,7 @@ function build() {
       if (err.details) {
         console.error(err.details);
       }
-      process.exit(1);
+      // process.exit(1);
       return;
     }
     const info = stats.toJson();
@@ -31,7 +31,7 @@ function build() {
     if (stats.hasErrors()) {
       console.log('Finished running webpack with errors...');
       info.errors.forEach(e => console.error(e));
-      process.exit(1);
+      // process.exit(1);
     } else {
       console.log('Finished running webpack...');
     }
@@ -39,6 +39,7 @@ function build() {
 
   webpack(
     {
+      watch: isDev,
       entry: path.join(srcPath, 'index.ts'),
       mode: isProduction ? 'production' : 'development',
       target: 'node',
@@ -57,7 +58,7 @@ function build() {
                   esModule: false,
                 },
               },
-              { loader: 'resolve-url-loader' },
+              // { loader: 'resolve-url-loader' },
               {
                 loader: 'sass-loader',
                 options: { sourceMap: true },
@@ -69,16 +70,16 @@ function build() {
             use: { loader: 'swc-loader' },
             exclude: /node_modules/,
           },
-          {
-            test: /\.(woff2?|ttf|otf|eot|svg)$/,
-            exclude: /node_modules/,
-            loader: 'file-loader',
-            options: {
-              outputPath: 'public',
-              publicPath: '/',
-              name: '[hash].[ext]',
-            },
-          },
+          // {
+          //   test: /\.(woff2?|ttf|otf|eot|svg)$/,
+          //   exclude: /node_modules/,
+          //   loader: 'file-loader',
+          //   options: {
+          //     outputPath: 'public',
+          //     publicPath: '/',
+          //     name: '[hash].[ext]',
+          //   },
+          // },
         ],
       },
       resolve: {
