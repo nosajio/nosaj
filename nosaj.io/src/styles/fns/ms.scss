@@ -21,3 +21,11 @@
 @function px($step) {
   @return _($step) * v.$font-size;
 }
+
+@function n($step) {
+  @return _($step);
+}
+
+@function pct($step) {
+  @return _($step) * 100%;
+}

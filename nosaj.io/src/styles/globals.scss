@@ -41,9 +41,17 @@
   --sans-serif-heavy: 800;
 }
 
+@media screen and (orientation: portrait) {
+  :root {
+    --font-size: #{v.$font-size-large};
+  }
+}
+
 :root,
 html,
 body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   font-size: var(--font-size);
   background-color: #eef0f6;
 }
@@ -90,4 +98,14 @@ p {
 
 .nosaj-svg path {
   fill: var(--color-black-100);
+}
+
+/* Footer */
+.nosaj-footer {
+  text-align: center;
+  line-height: ms.pct(3);
+
+  .heart {
+    margin-bottom: ms.rem(-1);
+  }
 }
