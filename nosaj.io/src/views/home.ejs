@@ -7,21 +7,28 @@
         <% posts.forEach((p, i)=> { %>
           <li>
             <article class="post-frag">
-              <a href="/r/<%= p.slug %>">
-                <h2 class="post-frag-title">
-                  <%= p.title %>
-                </h2>
-                <span class="post-frag-date">
-                  <%= p.nice_date %>
-                </span>
-                <% if (p.post_sample) { %>
-                <span  class="post-frag-sample">
-                  <p>
-                    <%= p.post_sample %>
-                  </p>
-                </span>
-                <span class="read-on">Read on</span>
+              <a href="/r/<%= p.slug %>" class="noop">
+                <% if (p.cover) { %>
+                  <div 
+                    class="post-frag-cover" 
+                    style="background-image: url('<%= p.cover %>')"></div>
                 <% } %>
+                <div class="post-frag-content">
+                  <h2 class="post-frag-title">
+                    <%= p.title %>
+                  </h2>
+                  <span class="post-frag-date">
+                    <%= p.nice_date %>
+                  </span>
+                  <% if (p.post_sample) { %>
+                  <span  class="post-frag-sample">
+                    <p>
+                      <%= p.post_sample %>
+                    </p>
+                  </span>
+                  <span class="read-on">Read on</span>
+                  <% } %>
+                </div>
               </a>
             </article>
           </li>

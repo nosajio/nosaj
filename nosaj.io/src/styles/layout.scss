@@ -2,9 +2,9 @@
 
 .container {
   width: 100%;
-  padding-left: ms.rem(3);
-  padding-right: ms.rem(3);
-
+  padding-left: var(--content-padding);
+  padding-right: var(--content-padding);
+  
   &.first {
     padding-top: ms.rem(3);
   }
@@ -19,14 +19,14 @@
   @extend .container;
 
   max-width: 40.88rem;
-  padding: ms.rem(3);
+  padding: var(--content-padding);
   border-radius: 5px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .reading-bg {
-  background: var(--color-white);
+  background: var(--color-reading);
 }
 
 .flex {

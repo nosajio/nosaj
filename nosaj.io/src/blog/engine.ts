@@ -9,6 +9,7 @@ export interface BlogPost {
   publish_date: string;
   slug: string;
   html: string;
+  cover?: string;
   post_sample: string;
 }
 
@@ -26,15 +27,14 @@ function augmentPost(post: BlogPost): AugmentedBlogPost {
 
 export async function getAllPosts() {
   const res = await pool.query<BlogPost>(
-    'select id, created_at, title, metadata, publish_date, slug, html, post_sample from nosaj.posts where publish_date < now() order by publish_date desc',
+    'select id, created_at, title, metadata, publish_date, slug, html, post_sample, cover from nosaj.posts where publish_date < now() order by publish_date desc',
   );
   return res.rows.map(augmentPost);
 }
 
 export async function getPost(slug: string) {
-  console.log(slug);
   const res = await pool.query<BlogPost>(
-    'select id, created_at, title, metadata, publish_date, slug, html, post_sample from nosaj.posts where publish_date < now() and slug = $1 order by publish_date desc',
+    'select id, created_at, title, metadata, publish_date, slug, html, post_sample, cover from nosaj.posts where publish_date < now() and slug = $1 order by publish_date desc',
     [slug],
   );
   const emptyResult = res.rowCount === 0;
