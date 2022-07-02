@@ -58,6 +58,5 @@ func ParseFile(body []byte) (*PostMetadata, []byte, []byte, string, error) {
 
 func getSample(md []byte) string {
 	p := strings.Split(strings.ReplaceAll(string(md), "\r\n", "\n"), "\n")
-	fmt.Printf("%v", p[0])
 	return p[0]
 }
