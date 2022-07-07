@@ -42,6 +42,7 @@ func ParseFile(body []byte) (*PostMetadata, []byte, []byte, string, error) {
 		}
 		// find the sample by taking the first paragraph as a simple string
 		if len(matter.Sample) == 0 {
+			fmt.Printf("missing sample string for %s, generating it from first paragraph", matter.Slug)
 			sample = getSample(rest)
 		} else {
 			sample = matter.Sample

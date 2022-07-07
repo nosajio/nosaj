@@ -99,8 +99,8 @@ func (s *Store) StorePost(html []byte, markdown []byte, filename string, sample 
 	} else {
 		// Insert
 		s.DB.Exec(`
-			insert into nosaj.posts (title, slug, cover, publish_date, markdown, html, file_name, file_hash, metadata) 
-			values ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+			insert into nosaj.posts (title, slug, cover, publish_date, markdown, html, file_name, file_hash, post_sample, metadata) 
+			values ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
 		`,
 			title,
 			slug,
@@ -110,11 +110,11 @@ func (s *Store) StorePost(html []byte, markdown []byte, filename string, sample 
 			string(html),
 			filename,
 			hex.EncodeToString(hash[:]),
+			sample,
 			postMetadataJSON(&meta),
 		)
 	}
 
-	fmt.Printf("%s, %s, %s, %s, %s, %v", title, slug, cover, filename, hex.EncodeToString(hash[:]), meta)
 	return nil
 }
 

@@ -54,7 +54,7 @@ func (repo *PostsRepo) Clone() error {
 func (repo *PostsRepo) CommitDetails() (string, error) {
 	r := repo.Repo
 	r.Branch("master")
-	fmt.Printf("%v", repo.Repo)
+	// fmt.Printf("%v", repo.Repo)
 
 	ref, err := r.Head()
 	if err != nil {
