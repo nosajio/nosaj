@@ -26,20 +26,30 @@ function augmentPost(post: BlogPost): AugmentedBlogPost {
 }
 
 export async function getAllPosts() {
-  const res = await pool.query<BlogPost>(
-    'select id, created_at, title, metadata, publish_date, slug, html, post_sample, cover from nosaj.posts where publish_date < now() order by publish_date desc',
-  );
-  return res.rows.map(augmentPost);
+  try {
+    const res = await pool.query<BlogPost>(
+      'select id, created_at, title, metadata, publish_date, slug, html, post_sample, cover from nosaj.posts where publish_date < now() order by publish_date desc',
+    );
+    return res.rows.map(augmentPost);
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
 }
 
 export async function getPost(slug: string) {
-  const res = await pool.query<BlogPost>(
-    'select id, created_at, title, metadata, publish_date, slug, html, post_sample, cover from nosaj.posts where publish_date < now() and slug = $1 order by publish_date desc',
-    [slug],
-  );
-  const emptyResult = res.rowCount === 0;
-  if (emptyResult) {
-    return undefined;
+  try {
+    const res = await pool.query<BlogPost>(
+      'select id, created_at, title, metadata, publish_date, slug, html, post_sample, cover from nosaj.posts where publish_date < now() and slug = $1 order by publish_date desc',
+      [slug],
+    );
+    const emptyResult = res.rowCount === 0;
+    if (emptyResult) {
+      return undefined;
+    }
+    return augmentPost(res.rows[0]);
+  } catch (err) {
+    console.error(err);
+    return undefined
   }
-  return augmentPost(res.rows[0]);
 }

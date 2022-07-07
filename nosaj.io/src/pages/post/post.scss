@@ -183,10 +183,24 @@
     background: var(--code-bg-color);
     padding: 0 ms.rem(-4);
   }
-}
 
-// Missing elements
-// - links
-// - videos
-// - code
-// - font styles like bold, italic, code / pre, strikeshrough
+  /* Tables */
+  table {
+    width: 100%;
+    border: 1px solid var(--foreground-color);
+
+    th {
+      border-bottom: 1px solid var(--foreground-color);
+    }
+    
+    tr:nth-child(even) {
+      background: var(--foreground-color);
+    }
+    
+    th, td {
+      padding: 0;
+      margin: 0;
+      font-size: ms.rem(1);
+    }
+  }
+}

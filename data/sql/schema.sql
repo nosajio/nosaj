@@ -27,3 +27,15 @@ CREATE TABLE
     commit_hash character varying(255) NULL,
     processing jsonb NULL DEFAULT '{"failed": [], "processed": []}' ::jsonb
   );
+
+-- Create stats table
+CREATE TABLE 
+  nosaj.stats (
+    id serial constraint stats_pkey primary key,
+    created_at timestamp(6) without time zone NOT NULL DEFAULT now(),
+    stat character varying(255) NULL,
+    uri character varying(255) NULL,
+    ip_address character varying(255) NULL,
+    token character varying(255) NULL,
+    payload jsonb NULL DEFAULT '{}'::jsonb
+  );
