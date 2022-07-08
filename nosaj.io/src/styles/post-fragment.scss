@@ -19,6 +19,13 @@
   display: flex;
 }
 
+.post-frag a:hover {
+  .read-on {
+    background: var(--text-color);
+    color: var(--background-color);
+  }
+}
+
 .post-frag-cover {
   flex: 0 0 auto;
   width: 11.3rem;
@@ -70,4 +77,5 @@
   padding: 9px 11px;
   line-height: 100%;
   justify-self: start;
+  transition: all 200ms ease;
 }

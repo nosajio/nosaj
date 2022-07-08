@@ -1,0 +1,24 @@
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: all 250ms ease;
+  box-shadow: inset 0 3px 0 var(--color-reading),
+    inset 0 -2px 0 var(--foreground-color);
+
+  &:hover {
+    box-shadow: inset 0 0px 0 var(--color-reading),
+      inset 0 -2px 0 var(--link-color);
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+p {
+  line-height: var(--line-height);
+  font-family: var(--sans-serif);
+}

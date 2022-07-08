@@ -1,0 +1,15 @@
+@use './fns/ms.scss' as ms;
+
+.nosaj-footer {
+  opacity: 0.6;
+  text-align: center;
+  line-height: ms.pct(3);
+
+  .heart {
+    margin-bottom: ms.rem(-1);
+  }
+
+  .heart path {
+    fill: var(--text-color);
+  }
+}

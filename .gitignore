@@ -2,7 +2,6 @@
 .env.*
 node_modules
 dist
-.pnpm-debug.*
 .DS_Store
 
 data/targets

@@ -1,0 +1,8 @@
+a.noop {
+  color: var(--text-color);
+  box-shadow: none;
+
+  &:hover {
+    box-shadow: none;
+  }
+}

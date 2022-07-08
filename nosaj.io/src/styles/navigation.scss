@@ -1,0 +1,27 @@
+@use './fns/ms.scss' as ms;
+@use './helpers.scss';
+
+/* Navigation */
+.navlist {
+  display: grid;
+  grid-auto-flow: column;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  column-gap: ms.rem(3);
+}
+
+.navitem a {
+  @extend .noop;
+}
+
+.navitem a:hover {
+  box-shadow: inset 0 0 0 var(--color-reading),
+    inset 0 -2px 0 var(--text-color);
+}
+
+.nosaj-svg {
+  path {
+    fill: var(--text-color);
+  }
+}
