@@ -15,12 +15,23 @@ export interface BlogPost {
 
 export interface AugmentedBlogPost extends BlogPost {
   nice_date: string;
+  url: string;
+  cover_file?: {
+    src: string;
+    mime?: string;
+  };
 }
+
+const baseUrl = 'https://nosaj.io';
+
+const getPostUrl = (slug: string) => `${baseUrl}/r/${slug}`;
 
 function augmentPost(post: BlogPost): AugmentedBlogPost {
   const nice_date = format(new Date(post.publish_date), 'LLLL do');
+  const url = getPostUrl(post.slug);
   return {
     ...post,
+    url,
     nice_date,
   };
 }
@@ -50,6 +61,6 @@ export async function getPost(slug: string) {
     return augmentPost(res.rows[0]);
   } catch (err) {
     console.error(err);
-    return undefined
+    return undefined;
   }
 }

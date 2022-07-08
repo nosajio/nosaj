@@ -4,6 +4,7 @@ import path from 'path';
 import * as db from './db';
 import { tokenCookie } from './middleware';
 import { homeHandler, postHandler } from './pages';
+import { rssHandler } from './rss';
 import './styles/index.scss';
 import { DEV } from './utils';
 
@@ -37,3 +38,6 @@ server.use(tokenCookie);
 // Configure main routes
 server.get('/', homeHandler);
 server.get('/r/:slug', postHandler);
+
+// RSS Feed
+server.get('/rss', rssHandler);
