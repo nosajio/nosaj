@@ -9,10 +9,10 @@ import './styles/index.scss';
 import { DEV } from './utils';
 
 if (DEV) {
-  require('dotenv').config();
+  require('dotenv').config({ path: '../.env.dev' });
 }
 
-const PORT = process.env?.PORT ?? 8080;
+const PORT = process.env?.WEB_PORT ?? 8080;
 const server = express();
 
 start();

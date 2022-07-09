@@ -38,7 +38,7 @@ func GetEnv() AppEnv {
 }
 
 func InitConfig() {
-	err := godotenv.Load()
+	err := godotenv.Load("../.env.dev")
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}
@@ -47,15 +47,15 @@ func InitConfig() {
 // GetConfig returns the full Config struct
 func GetConfig() Config {
 	config := Config{
-		PG_USERNAME:      os.Getenv("PG_USERNAME"),
-		PG_PASSWORD:      os.Getenv("PG_PASSWORD"),
-		PG_DATABASE:      os.Getenv("PG_DATABASE"),
-		PG_HOST:          os.Getenv("PG_HOST"),
-		POSTS_TABLE_NAME: os.Getenv("POSTS_TABLE_NAME"),
-		OPS_TABLE_NAME:   os.Getenv("OPS_TABLE_NAME"),
-		WEB_API_KEY:      os.Getenv("WEB_API_KEY"),
-		WEB_PORT:         os.Getenv("WEB_PORT"),
-		POSTS_REPO:       os.Getenv("POSTS_REPO"),
+		POSTS_TABLE_NAME: "posts",
+		OPS_TABLE_NAME:   "operations",
+		PG_USERNAME:      os.Getenv("PGUSER"),
+		PG_PASSWORD:      os.Getenv("PGPASSWORD"),
+		PG_DATABASE:      os.Getenv("PGDATABASE"),
+		PG_HOST:          os.Getenv("PGHOST"),
+		WEB_API_KEY:      os.Getenv("DATA_WEB_API_KEY"),
+		WEB_PORT:         os.Getenv("DATA_WEB_PORT"),
+		POSTS_REPO:       os.Getenv("DATA_POSTS_REPO"),
 	}
 
 	return config

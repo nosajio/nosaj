@@ -26,12 +26,12 @@ func (s *Store) Connect(config *Config) error {
 
 	dbConn, err := sql.Open("postgres", connStr)
 	if err != nil {
-		fmt.Printf("cannot connect to database using user: %s, host: %s, db: %s", config.PG_USERNAME, config.PG_HOST, config.PG_DATABASE)
+		fmt.Printf("cannot connect to database using str: %s", connStr)
 		return err
 	}
 
 	s.DB = *dbConn
-	fmt.Println("database connection successful")
+	fmt.Printf("database connection successful: %s", connStr)
 
 	return nil
 }

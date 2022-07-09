@@ -10,8 +10,8 @@
   "scripts": {
     "build": "node ./scripts/build",
     "start": "node ./dist/index.js",
-    "dev": "concurrently \"npm:build\" \"npm:start\"",
-    "watch": ""
+    "dev": "concurrently \"npm:watch\" \"npm:start\"",
+    "watch": "node ./scripts/build -w"
   },
   "dependencies": {
     "cookie-parser": "^1.4.6",

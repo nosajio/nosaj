@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  db:
+    build:
+      context: db
+      dockerfile: ./Dockerfile
+    environment:
+      - POSTGRES_USER=${PGUSER}
+      - POSTGRES_PASSWORD=${PGPASSWORD}
+      - PGDATA=${PGDATA}
+    ports:
+      - 5432:5432
+    volumes:
+      - /tmp/pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dev"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  nosaj.io:
+    depends_on:
+      db:
+        condition: service_healthy
+    build:
+      context: nosaj.io
+      dockerfile: ./Dockerfile
+    environment:
+      - NODE_ENV=production
+      - WEB_PORT=8181
+      - PGUSER=${PGUSER}
+      - PGPASSWORD=${PGPASSWORD}
+      - PGHOST=${PGHOST}
+      - PGDATABASE=${PGDATABASE}
+    ports:
+      - 8181:8181
+
+  data:
+    depends_on:
+      db:
+        condition: service_healthy
+    build:
+      context: data
+      dockerfile: ./Dockerfile
+    ports:
+      - 8191:8191
+    environment:
+      - APP_ENV=PRODUCTION
+      - DATA_WEB_PORT=8191
+      - DATA_POSTS_REPO=/usr/src/writing
+      - DATA_WEB_API_KEY=${DATA_API_KEY}
+      - PGUSER=${PGUSER}
+      - PGPASSWORD=${PGPASSWORD}
+      - PGHOST=${PGHOST}
+      - PGDATABASE=${PGDATABASE}
+    volumes:
+      - /Users/jason/Writing:/usr/src/writing

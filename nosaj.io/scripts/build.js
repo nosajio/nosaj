@@ -11,6 +11,8 @@ const isDev = !isProduction;
 
 rimraf.sync(distPath);
 
+const WATCH_MODE = process.argv.length >= 3 && process.argv[2] === '-w';
+
 copyPublicDir().then(() => {
   console.log('Copied public files...');
   build();
@@ -39,7 +41,7 @@ function build() {
 
   webpack(
     {
-      watch: isDev,
+      watch: isDev && WATCH_MODE,
       entry: path.join(srcPath, 'index.ts'),
       mode: isProduction ? 'production' : 'development',
       target: 'node',
