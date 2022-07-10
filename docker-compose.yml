@@ -48,7 +48,7 @@ services:
     environment:
       - APP_ENV=PRODUCTION
       - DATA_WEB_PORT=8191
-      - DATA_POSTS_REPO=/usr/src/writing
+      - DATA_POSTS_REPO=${DATA_POSTS_REPO}
       - DATA_WEB_API_KEY=${DATA_WEB_API_KEY}
       - PGUSER=${PGUSER}
       - PGPASSWORD=${PGPASSWORD}
