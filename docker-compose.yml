@@ -14,7 +14,7 @@ services:
     volumes:
       - /tmp/pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U dev"]
+      test: ["CMD-SHELL", "pg_isready -U ${PGUSER}"]
       interval: 5s
       timeout: 5s
       retries: 5
