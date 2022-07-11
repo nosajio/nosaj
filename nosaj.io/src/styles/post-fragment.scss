@@ -1,3 +1,4 @@
+@use './mixins/breakpoints.scss' as bp;
 @use './fns/ms.scss' as ms;
 
 .frag-list {
@@ -17,40 +18,52 @@
 
 .post-frag a {
   display: flex;
+  flex-flow: column nowrap;
+  align-items: start;
+
+  @include bp.medium-up {
+    flex-direction: row;
+  }
 }
 
 .post-frag a:hover {
   .read-on {
-    background: var(--text-color);
-    color: var(--background-color);
+    background: var(--color-blue-500);
+    color: var(--text-color);
   }
 }
 
 .post-frag-cover {
-  flex: 0 0 auto;
-  width: 11.3rem;
-  max-height: 11.3rem;
-  overflow: hidden;
-  margin-right: ms.rem(3);
   background-size: cover;
+  width: 100%;
+  height: ms.rem(11);
+  margin-bottom: ms.rem(2);
+
+  @include bp.medium-up {
+    flex: 0 0 auto;
+    max-width: 11.3rem;
+    height: 11.3rem;
+    margin-bottom: 0;
+    margin-right: ms.rem(3);
+  }
 }
 
 .post-frag-content {
   flex: 1 1 auto;
   display: grid;
-  width: auto;
-  grid-template-rows: 1fr;
+  align-items: start;
+  grid-template-rows: min-content;
   grid-template-areas:
     'date'
     'title'
     'sample';
-  row-gap: ms.rem(-1);
 }
 
 .post-frag-title {
   grid-area: title;
   font-size: ms.rem(2);
   font-weight: var(--sans-serif-heavy);
+  margin: 0 0 ms.rem(-1);
 }
 
 .post-frag-date {
@@ -58,13 +71,14 @@
   font-weight: 400;
   color: var(--color-black-700);
   font-size: ms.rem(-1);
+  margin: 0 0 ms.rem(-5);
 }
 
 .post-frag-sample {
   display: block;
 
   p {
-    margin: 0;
+    margin: 0 0 ms.rem(-1);
   }
 }
 
