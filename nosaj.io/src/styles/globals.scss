@@ -1,3 +1,5 @@
+@use './mixins/breakpoints.scss' as bp;
+@use './mixins/theme.scss' as th;
 @use './vars.scss' as v;
 @use './fns/ms.scss' as ms;
 
@@ -50,22 +52,12 @@
   --sans-serif-normal: 300;
   --sans-serif-bold: 700;
   --sans-serif-heavy: 800;
-}
 
-@media screen and (max-width: 40.88rem) {
-  :root {
-    --content-padding: #{ms.rem(1)};
-  }
-}
-
-@media screen and (orientation: portrait) {
-  :root {
+  @include bp.small-up {
     --font-size: #{v.$font-size-large};
   }
-}
 
-@media screen and (prefers-color-scheme: dark) {
-  :root {
+  @include th.darkmode {
     --link-color: var(--color-blue-800);
     --foreground-color: var(--color-black-200);
     --background-color: var(--color-black-100);
@@ -73,6 +65,12 @@
     --text-color: var(--color-black-900);
     --code-bg-color: var(--color-black-050);
     --code-fg-color: var(--color-black-950);
+  }
+}
+
+@media screen and (max-width: 40.88rem) {
+  :root {
+    --content-padding: #{ms.rem(1)};
   }
 }
 
@@ -96,4 +94,3 @@ body {
 *::after {
   box-sizing: border-box;
 }
-

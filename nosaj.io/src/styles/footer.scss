@@ -1,9 +1,11 @@
 @use './fns/ms.scss' as ms;
 
 .nosaj-footer {
-  opacity: 0.6;
+  opacity: 0.5;
   text-align: center;
   line-height: ms.pct(3);
+  font-size: ms.rem(-1);
+  padding: ms.rem(5) ms.rem(3) ms.rem(3);
 
   .heart {
     margin-bottom: ms.rem(-1);
@@ -11,5 +13,6 @@
 
   .heart path {
     fill: var(--text-color);
+    opacity: 0.4;
   }
 }

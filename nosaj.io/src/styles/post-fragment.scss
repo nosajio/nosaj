@@ -1,3 +1,4 @@
+@use './mixins/theme.scss' as th;
 @use './mixins/breakpoints.scss' as bp;
 @use './fns/ms.scss' as ms;
 
@@ -29,7 +30,11 @@
 .post-frag a:hover {
   .read-on {
     background: var(--color-blue-500);
-    color: var(--text-color);
+    color: white;
+
+    @include th.darkmode {
+      color: var(--text-color);
+    }
   }
 }
 
