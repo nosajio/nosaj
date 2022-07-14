@@ -1,19 +1,32 @@
 @use '../../styles/fns/ms.scss' as ms;
+@use '../../styles/mixins/theme.scss' as th;
 @use '../../styles/posts-list.scss';
 
 .intro {
   p {
-    color: var(--color-black-700);
+    color: var(--color-black-400);
     font-size: ms.rem(2);
+
+    @include th.darkmode {
+      color: var(--color-black-700);
+    }
   }
 
   p.bold {
     font-weight: var(--sans-serif-bold);
   }
+  
+  p.small {
+    font-size: ms.rem(1);
+  }
 
   p em {
     font-style: normal;
-    color: var(--color-black-900);
+    color: var(--color-black-100);
+
+    @include th.darkmode {
+      color: var(--color-black-900);
+    }
   }
 
   .hush {
@@ -34,7 +47,11 @@
     top: calc(50% - 1.5px);
     height: 3px;
     width: 100%;
-    background: var(--color-black-200);
+    background: var(--color-black-800);
+
+    @include th.darkmode {
+      background: var(--color-black-200);
+    }
   }
 
   h1 {
@@ -52,8 +69,12 @@
       font-weight: var(--sans-serif-bold);
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--color-black-700);
+      color: var(--color-black-400);
       background: var(--background-color);
+
+      @include th.darkmode {
+        color: var(--color-black-700);
+      }
     }
   }
 }
