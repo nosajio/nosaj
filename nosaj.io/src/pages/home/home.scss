@@ -1,4 +1,65 @@
-@use '../../styles/post-fragment.scss';
+@use '../../styles/fns/ms.scss' as ms;
+@use '../../styles/posts-list.scss';
 
-.home {
+.intro {
+  p {
+    color: var(--color-black-700);
+    font-size: ms.rem(2);
+  }
+
+  p.bold {
+    font-weight: var(--sans-serif-bold);
+  }
+
+  p em {
+    font-style: normal;
+    color: var(--color-black-900);
+  }
+
+  .hush {
+    filter: blur(6px);
+  }
+}
+
+.posts-title {
+  position: relative;
+  margin-top: ms.rem(6);
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: calc(50% - 1.5px);
+    height: 3px;
+    width: 100%;
+    background: var(--color-black-200);
+  }
+
+  h1 {
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+
+    .text {
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      padding: 0 1em;
+      margin-left: -1em;
+      font-size: ms.rem(-1);
+      font-weight: var(--sans-serif-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-black-700);
+      background: var(--background-color);
+    }
+  }
+}
+
+.posts-home {
+  display: flex;
+  margin-top: ms.rem(6);
+  justify-content: center;
 }

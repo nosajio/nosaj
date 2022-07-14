@@ -50,3 +50,10 @@
     @content;
   }
 }
+
+// 
+@mixin not-touch {
+  @media screen and (pointer: fine) {
+    @content;
+  }
+}

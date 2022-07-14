@@ -9,6 +9,6 @@ export const homeHandler: Handler = async (req, res) => {
     posts,
     page: { title: '🤙' },
   });
-  handlerStat('view', req, res)
+  handlerStat('view', req, res);
   res.end(page);
 };

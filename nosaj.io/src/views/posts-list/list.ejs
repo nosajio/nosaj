@@ -1,0 +1,7 @@
+<ul class="posts-list">
+  <% posts.forEach(post=> { %>
+    <li class="posts-list-row">
+      <%- include('./row', { ...post }) %>
+    </li>
+  <% }) %>
+</ul>

@@ -1,42 +1,24 @@
-<%- include('_header') -%>
+<%- include('includes/header') -%>
   <main class="page">
-    <%- include('_navbar') %>
+    <%- include('includes/navbar') %>
 
-    <div class="container content-surface reading-bg">
-      <ul class="frag-list">
-        <% posts.forEach((p, i)=> { %>
-          <li>
-            <article class="post-frag">
-              <a href="/r/<%= p.slug %>" class="noop">
-                <% if (p.cover) { %>
-                  <div 
-                    class="post-frag-cover" 
-                    style="background-image: url('<%= p.cover %>')"></div>
-                <% } %>
-                <div class="post-frag-content">
-                  <h2 class="post-frag-title">
-                    <%= p.title %>
-                  </h2>
-                  <span class="post-frag-date">
-                    <%= p.nice_date %>
-                  </span>
-                  <% if (p.post_sample) { %>
-                  <span  class="post-frag-sample">
-                    <p>
-                      <%= p.post_sample %>
-                    </p>
-                  </span>
-                  <span class="read-on">Read on</span>
-                  <% } %>
-                </div>
-              </a>
-            </article>
-          </li>
-          <% if (posts.length - 1 >= i + 1) { %>
-            <li class="frag-div"></li>
-          <% } %>
-        <% }) %>
-      </ul>
+    <section class="container intro">
+      <div class="content-surface">
+        <p class="bold">
+          <em>Hello, I’m Jason.</em> I create useful & beautiful digital products. I’m interested in using technology to improve the human experience.
+        </p>
+        <p class="bold">Working on <span class="hush">[secret]</span>.</p>
+        <p>Contact jason@nosaj.io</p>
+      </div>
+    </section>
+
+    <div class="posts-title container">
+      <h1>
+        <span class="text">Latest Posts</span>
+      </h1>
+    </div>
+    <div class="container posts-home">
+      <%- include('posts-list/list') %> 
     </div>
 </main>
-<%- include('_footer') -%>
+<%- include('includes/footer') -%>

@@ -4,25 +4,27 @@
   width: 100%;
   padding-left: var(--content-padding);
   padding-right: var(--content-padding);
-  
+
   &.first {
-    padding-top: ms.rem(3);
+    padding-top: var(--content-padding);
   }
 
   &.surround {
-    padding-top: ms.rem(3);
-    padding-bottom: ms.rem(3);
+    padding-top: var(--content-padding);
+    padding-bottom: var(--content-padding);
   }
 }
 
 .content-surface {
-  @extend .container;
-
-  max-width: 40.88rem;
-  padding: var(--content-padding);
-  border-radius: 5px;
+  width: 100%;
+  max-width: var(--content-max-width);
+  // padding: var(--content-padding);
   margin-left: auto;
   margin-right: auto;
+
+  &.surround {
+    padding: var(--content-padding);
+  }
 }
 
 .reading-bg {

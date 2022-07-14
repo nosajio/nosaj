@@ -1,0 +1,12 @@
+@use '../vars.scss' as v;
+
+@function strip($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+@function pxrem($n) {
+  @return (strip($n) / strip(v.$font-size)) * 1rem;
+}

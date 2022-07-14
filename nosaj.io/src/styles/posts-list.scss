@@ -1,0 +1,83 @@
+@use './mixins/theme.scss' as th;
+@use './fns/units.scss' as u;
+@use './mixins/breakpoints.scss' as bp;
+@use './fns/ms.scss' as ms;
+@use './helpers.scss';
+
+ul.posts-list {
+  --color-muted: var(--color-black-400);
+  --color-mid: var(--color-black-600);
+
+  display: block;
+
+  // margin: 0 auto;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+}
+
+.posts-list-row {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+a.posts-list-item {
+  @extend .noop;
+}
+
+.posts-list-item {
+  position: relative;
+  display: grid;
+  justify-content: stretch;
+  width: 100%;
+  max-width: var(--content-max-width);
+  grid-template-columns: 4.777rem 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'date title'
+    '.    sample'
+    '.    divide';
+
+  @media screen and (min-width: 60.625rem) {
+    max-width: 50.444rem;
+    grid-template-columns: 4.777rem 1fr 4.777rem;
+    grid-template-rows: auto;
+    grid-template-areas:
+      'date title  .'
+      '.    sample .'
+      '.    divide .';
+  }
+}
+
+.posts-list-row:not(:last-child) .posts-list-item::after {
+  content: '';
+  grid-area: divide;
+  width: 100%;
+  max-width: 40.88rem;
+  height: 1px;
+  background: var(--color-black-200);
+  border-radius: 1px;
+  margin: ms.rem(3) 0;
+}
+
+.post-row-title {
+  grid-area: title;
+  font-size: ms.rem(2);
+}
+
+p.post-row-sample {
+  grid-area: sample;
+  color: var(--color-mid);
+  margin: ms.rem(-3) 0 0;
+}
+
+.post-row-date {
+  grid-area: date;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  font-size: ms.rem(-1);
+  align-self: center;
+}

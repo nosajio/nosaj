@@ -31,7 +31,7 @@ async function start() {
 // Fallthrough middleware to serve files like css from the public dir
 server.use(express.static(path.join(__dirname, 'public')));
 
-// Identify user with a cookie
+// Cookie based user ID
 server.use(cookieParser());
 server.use(tokenCookie);
 

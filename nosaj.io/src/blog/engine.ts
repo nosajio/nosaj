@@ -27,7 +27,7 @@ const baseUrl = 'https://nosaj.io';
 const getPostUrl = (slug: string) => `${baseUrl}/r/${slug}`;
 
 function augmentPost(post: BlogPost): AugmentedBlogPost {
-  const nice_date = format(new Date(post.publish_date), 'LLLL do');
+  const nice_date = format(new Date(post.publish_date), 'LLL dd');
   const url = getPostUrl(post.slug);
   return {
     ...post,

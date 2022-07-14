@@ -7,6 +7,7 @@
   --font-size: #{v.$font-size};
   --line-height: 140%;
   --content-padding: #{ms.rem(3)};
+  --content-max-width: 40.88rem;
 
   --color-black-050: hsl(227, 19%, 6%);
   --color-black-100: hsl(227, 19%, 11%);
@@ -75,15 +76,14 @@
 }
 
 :root,
-html,
-body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+html {
   font-size: var(--font-size);
-  background-color: var(--background-color);
 }
 
 body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--background-color);
   font-family: var(--sans-serif);
   font-weight: 400;
   color: var(--text-color);
