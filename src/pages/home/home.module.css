@@ -1,0 +1,37 @@
+.logos {
+
+}
+
+.logos_title {}
+
+.logo_images {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.logo_images > li {
+  display: block;
+}
+
+.logo_images > li > img {
+  display: block;
+  height: auto;
+}
+
+.logo_images .logo.frontier img {
+  max-width: 142px;
+}
+
+.portrait {
+  background: url('/jason.png') center / cover;
+  width: 100%;
+  max-width: 542px;
+}
+
+.portrait::after {
+  content: "";
+  display: block;
+  padding-top: 61.993%;
+}

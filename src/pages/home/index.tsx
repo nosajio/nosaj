@@ -1,4 +1,4 @@
-import s from './home.module.scss';
+import s from './home.module.css';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -21,19 +21,25 @@ const Home: NextPage = () => {
           <h2 className="logos-title">
             I’ve built 50+ products for startups and established companies.
           </h2>
-          <ul className="logo-images">
-            <li className="logo">
-              <Image layout="fill" src="/logos/frontier.svg" alt="Frontier" />
-            </li>
-            <li className="logo">
-              <Image layout="fill" src="/logos/bbc.svg" alt="BBC" />
-            </li>
-            <li className="logo">
-              <Image layout="fill" src="/logos/pave.svg" alt="Pave" />
-            </li>
-            <li className="logo">
+          <ul className={s.logo_images}>
+            <li className="logo frontier">
               <Image
-                layout="fill"
+                width={143}
+                height={33}
+                src="/logos/frontier.svg"
+                alt="Frontier"
+              />
+            </li>
+            <li className="logo bbc">
+              <Image width={103} height={30} src="/logos/bbc.svg" alt="BBC" />
+            </li>
+            <li className="logo pave">
+              <Image width={79} height={24} src="/logos/pave.svg" alt="Pave" />
+            </li>
+            <li className="logo firstminute">
+              <Image
+                width={124}
+                height={26}
                 src="/logos/firstminute.svg"
                 alt="Firstminute Capital"
               />

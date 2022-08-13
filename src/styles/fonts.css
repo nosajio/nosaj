@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'N27';
+  src: url('/fonts/N27-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'N27';
+  src: url('/fonts/N27-RegularItalic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'N27';
+  src: url('/fonts/N27-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'N27';
+  src: url('/fonts/N27-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'N27';
+  src: url('/fonts/N27-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'N27';
+  src: url('/fonts/N27-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+}
