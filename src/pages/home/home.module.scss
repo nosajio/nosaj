@@ -1,0 +1,11 @@
+.portrait {
+  background: url('/jason.png') center / cover;
+  width: 100%;
+  max-width: 542px;
+}
+
+.portrait::after {
+  content: "";
+  display: block;
+  padding-top: 61.993%;
+}
