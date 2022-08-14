@@ -1,10 +1,11 @@
 import type { AppProps } from 'next/app';
 import 'normalize.css';
 import '../styles/fonts.css';
+import '../styles/layout.css';
 import '../styles/globals.css';
 
-function MyApp({ Component, pageProps }: AppProps) {
+function Nosajio({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />;
 }
 
-export default MyApp;
+export default Nosajio;

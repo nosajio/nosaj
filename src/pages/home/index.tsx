@@ -1,8 +1,9 @@
-import s from './home.module.css';
+import clsx from 'clsx';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import { Footer } from '../../components';
+import { ArrowList, Footer } from '../../components';
+import s from './home.module.css';
 
 const Home: NextPage = () => {
   return (
@@ -12,15 +13,19 @@ const Home: NextPage = () => {
         <meta name="description" content="" />
       </Head>
 
-      <section className="home-content">
-        <h1 className={s.opener}>
-          I’m Jason, a self-taught designer & engineer. I help startups build
-          winning products.
-        </h1>
-        <div className={s.logos}>
-          <h2 className="logos-title">
-            I’ve built 50+ products for startups and established companies.
+      <section className={clsx('content', s.home_content)}>
+        <div className={s.portrait_opener}>
+          <h1 className={s.opener}>
+            I’m Jason, I build tech products and startups from zero to one.
+          </h1>
+          <h2 className={s.opener_sub}>
+            Right now I’m working with select founders to build winning
+            products.
           </h2>
+          <div className={s.portrait} />
+        </div>
+        <div className={s.logos}>
+          <p className={s.logos_title}>I’ve built over 50 products for startups and established companies.</p>
           <ul className={s.logo_images}>
             <li className="logo frontier">
               <Image
@@ -46,18 +51,11 @@ const Home: NextPage = () => {
             </li>
           </ul>
         </div>
-        <ul className="actions arrows">
-          <li className="action">
-            <a href="/startups.html">Services for startups</a>
-          </li>
-          <li className="action">
-            <a href="/call.html">Book a 15 minute call</a>
-          </li>
-          <li className="action">
-            <a href="https://nosaj.substack.com">Writing</a>
-          </li>
-        </ul>
-        <div className={s.portrait} />
+        <ArrowList>
+          <a href="/startups.html">Services for startups</a>
+          <a href="/call.html">Book a 15 minute call</a>
+          <a href="https://nosaj.substack.com">Writing</a>
+        </ArrowList>
       </section>
       <Footer />
     </main>

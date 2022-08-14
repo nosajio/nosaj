@@ -1,12 +1,53 @@
-.logos {
-
+.home_content {
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+    'portrait-opener'
+    'links'
+    'logos';
+  grid-template-rows: auto;
+  row-gap: var(--ms-4-rem);
 }
 
-.logos_title {}
+.portrait_opener {
+  grid-area: portrait-opener;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'portrait'
+    'opener'
+    'sub';
+  row-gap: var(--ms-1-rem);
+}
+
+.opener {
+  grid-area: opener;
+}
+
+.opener_sub {
+  grid-area: sub;
+  font-size: var(--ms-1-rem);
+}
+
+.links {
+  grid-area: links;
+}
+
+.logos {
+  grid-area: logos;
+}
+
+.logos_title {
+  color: var(--color-black-400);
+  font-size: var(--ms--1-rem);
+}
 
 .logo_images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  gap: var(--ms--1-rem);
   list-style-type: none;
-  display: flex;
   padding: 0;
   margin: 0;
 }
@@ -20,18 +61,16 @@
   height: auto;
 }
 
-.logo_images .logo.frontier img {
-  max-width: 142px;
-}
-
 .portrait {
+  grid-area: portrait;
   background: url('/jason.png') center / cover;
   width: 100%;
   max-width: 542px;
+  border-radius: var(--ms--3-rem);
 }
 
 .portrait::after {
-  content: "";
+  content: '';
   display: block;
   padding-top: 61.993%;
 }
