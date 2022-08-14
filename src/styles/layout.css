@@ -1,4 +1,22 @@
 .content {
   width: 100vw;
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.mid {
+  width: 100%;
+  max-width: 650px;
+}
+
+@media (--bp-medium) {
+  .content {
+    padding-left: var(--ms-4-rem);
+    padding-right: var(--ms-4-rem);
+  }
+
+  .mid {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

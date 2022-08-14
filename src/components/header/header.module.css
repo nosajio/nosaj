@@ -1,0 +1,33 @@
+.nosaj_header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media (--bp-medium) {
+  .nosaj_header {
+    padding-top: var(--ms-2-rem);
+    padding-bottom: var(--ms-2-rem);
+  }
+}
+
+.nosaj_logo {
+  box-shadow: none;
+  font-weight: 500;
+}
+
+.call_btn {
+  display: block;
+  box-shadow: none;
+  font-size: var(--ms--1-rem);
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.1);
+  padding: var(--ms--4-rem) var(--ms--1-rem);
+  line-height: 1;
+  border-radius: 3px;
+}
+
+.call_btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}

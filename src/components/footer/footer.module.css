@@ -1,0 +1,46 @@
+.nosaj_footer {
+  background: #000;
+  width: 100vw;
+  margin-top: var(--ms-7-rem);
+}
+
+.footer_content {
+  display: grid;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'links'
+    'copyright';
+}
+
+.footer_links {
+  grid-area: links;
+}
+
+.footer_copy {
+  display: flex;
+  align-items: flex-end;
+  flex-flow: column nowrap;
+  grid-area: copyright;
+  justify-self: stretch;
+  align-self: end;
+  font-size: var(--ms--1-rem);
+}
+
+.loopyloop {
+  width: 52px;
+  height: 22px;
+  background: no-repeat url('/ui/nosajloop.svg') center / contain;
+  margin-bottom: var(--ms-2-rem);
+}
+
+@media (--bp-medium) {
+  .footer_content {
+    grid-template-rows: unset;
+    grid-template-areas: 'links copyright';
+    grid-template-columns: 1fr 1fr;
+    padding-top: var(--ms-3-rem);
+    padding-bottom: var(--ms-3-rem);
+  }
+}

@@ -26,7 +26,6 @@
 
 .opener_sub {
   grid-area: sub;
-  font-size: var(--ms-1-rem);
 }
 
 .links {
@@ -39,7 +38,7 @@
 
 .logos_title {
   color: var(--color-black-400);
-  font-size: var(--ms--1-rem);
+  font-size: 1rem;
 }
 
 .logo_images {
@@ -65,12 +64,22 @@
   grid-area: portrait;
   background: url('/jason.png') center / cover;
   width: 100%;
-  max-width: 542px;
   border-radius: var(--ms--3-rem);
 }
 
 .portrait::after {
   content: '';
   display: block;
-  padding-top: 61.993%;
+  padding-top: 64%;
+}
+
+@media (--bp-medium) {
+  .portrait_opener {
+    row-gap: var(--ms-3-rem);
+  }
+
+  .logo_images {
+    grid-template-columns: unset;
+    grid-auto-flow: column;
+  }
 }

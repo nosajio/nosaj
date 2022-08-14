@@ -1,0 +1,40 @@
+.icon_list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-rows: auto;
+  row-gap: var(--ms--1-rem);
+}
+
+.compact_list.icon_list {
+  row-gap: var(--ms--3-rem);
+}
+
+.list_item {
+  display: flex;
+}
+
+.list_item::before {
+  content: '';
+  display: block;
+  margin-right: var(--ms--1-rem);
+}
+
+.arrow.list_item::before {
+  width: 13px;
+  min-height: 7px;
+  background: url('/ui/icon-arrow.svg') no-repeat center / 100% auto;
+}
+
+.check.list_item::before {
+  width: 12px;
+  min-height: 9px;
+  background: url('/ui/icon-check.svg') no-repeat center / 100% auto;
+}
+
+.chevron.list_item::before {
+  width: 6px;
+  min-height: 9px;
+  background: url('/ui/icon-chevron.svg') no-repeat center / 100% auto;
+}

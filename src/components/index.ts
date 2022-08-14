@@ -1,2 +1,3 @@
 export * from './footer';
-export * from './arrowList';
+export * from './iconList';
+export * from './header';
