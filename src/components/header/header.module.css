@@ -13,8 +13,9 @@
 }
 
 .nosaj_logo {
-  box-shadow: none;
-  font-weight: 500;
+  width: 107px;
+  height: 16px;
+
 }
 
 .call_btn {

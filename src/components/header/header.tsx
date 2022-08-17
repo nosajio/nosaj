@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 import s from './header.module.css';
+import Logo from './nosaj-logo.svg';
 
 type HeaderProps = {
   showCallButton?: boolean;
@@ -19,11 +20,14 @@ const links: Link[] = [
 ];
 
 export const Header = ({ showCallButton = true }: HeaderProps) => {
+  console.log(Logo);
   return (
     <div className="content">
       <header className={clsx('mid', s.nosaj_header)}>
         <Link href="/">
-          <a className={clsx('noop', s.nosaj_logo)}>nosaj.io</a>
+          <a className={clsx('noop', s.nosaj_logo)}>
+            <Logo />
+          </a>
         </Link>
         {showCallButton && (
           <Link href="/call">
