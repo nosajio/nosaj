@@ -1,3 +1,62 @@
+/* CHANEY */
+@font-face {
+  font-family: 'CHANEY';
+  src: url('/fonts/CHANEY-Wide.woff') format('woff'),
+    url('/fonts/CHANEY-Wide.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Silka */
+@font-face {
+  font-family: 'silka';
+  src: url('/fonts/Silka-Regular.woff') format('woff'),
+    url('/fonts/Silka-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'silka';
+  src: url('/fonts/Silka-RegularItalic.woff') format('woff'),
+    url('/fonts/Silka-RegularItalic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'silka';
+  src: url('/fonts/Silka-Medium.woff') format('woff'),
+    url('/fonts/Silka-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'silka';
+  src: url('/fonts/Silka-MediumItalic.woff') format('woff'),
+    url('/fonts/Silka-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'silka';
+  src: url('/fonts/Silka-Bold.woff') format('woff'),
+    url('/fonts/Silka-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'silka';
+  src: url('/fonts/Silka-BoldItalic.woff') format('woff'),
+    url('/fonts/Silka-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* N27 */
 @font-face {
   font-family: 'N27';
   src: url('/fonts/N27-Regular.woff') format('woff');
