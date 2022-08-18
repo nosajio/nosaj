@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useEffect, useLayoutEffect } from 'react';
-import { Footer, Header } from '../../components';
+import { useEffect } from 'react';
+import { Page } from '../../components';
 import s from './call.module.css';
 
 const CallPage: NextPage = () => {
@@ -19,27 +19,28 @@ const CallPage: NextPage = () => {
   }, []);
 
   return (
-    <main id="main">
+    <Page callButton={false}>
       <Head>
-        <title>Book a call</title>
+        <title>
+          🗓 15 minute call with Jason | 🚀 Shipping software for startups
+        </title>
         <meta name="description" content="" />
       </Head>
 
-      <Header showCallButton={false} />
-
-      <div className="content">
-        <section className={clsx('mid')}>
-          <div className={s.booking_frame}>
-            <div
-              className="calendly-inline-widget"
-              data-url="https://calendly.com/nosaj/chat?hide_gdpr_banner=1"
-              style={{ minWidth: 320, height: '90vh' }}
-            />
-          </div>
-        </section>
+      <div className="container">
+        <div className="content">
+          <section className={clsx('mid')}>
+            <div className={s.booking_frame}>
+              <div
+                className="calendly-inline-widget"
+                data-url="https://calendly.com/nosaj/chat?hide_gdpr_banner=1"
+                style={{ minWidth: 320, height: '90vh' }}
+              />
+            </div>
+          </section>
+        </div>
       </div>
-      <Footer />
-    </main>
+    </Page>
   );
 };
 

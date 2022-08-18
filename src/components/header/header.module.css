@@ -4,6 +4,7 @@
   align-items: center;
   padding-top: var(--ms--1-rem);
   padding-bottom: var(--ms--1-rem);
+  min-height: 74px;
 }
 
 .nosaj_logo {

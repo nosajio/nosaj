@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   return (
     <Page>
       <Head>
-        <title>Jason...</title>
+        <title>🚀 Shipping software for startups</title>
         <meta name="description" content="" />
       </Head>
 
