@@ -12,6 +12,14 @@
   padding-right: var(--ms--1-rem);
 }
 
+.pt {
+  padding-top: var(--ms-5-rem);
+}
+
+.pb {
+  padding-bottom: var(--ms-5-rem);
+}
+
 @media (--bp-medium) {
   .content {
     padding-left: var(--ms-4-rem);

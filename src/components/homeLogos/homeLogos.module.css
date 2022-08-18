@@ -1,3 +1,40 @@
 .home_logos {
+}
 
+.logos_title {
+}
+
+.logos_list {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.logos_list_item {
+  flex-basis: 50%;
+  height: var(--ms-5-rem);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.logos_list_item.frontier-logo {
+  background-image: url('/logos/frontier.svg');
+  background-size: 136px auto;
+}
+
+.logos_list_item.pave-logo {
+  background-image: url('/logos/pave.svg');
+  background-size: 77px auto;
+}
+
+.logos_list_item.bbc-logo {
+  background-image: url('/logos/bbc.svg');
+  background-size: 89px auto;
+}
+
+.logos_list_item.firstminute-logo {
+  background-image: url('/logos/firstminute.svg');
+  background-size: 125px auto;
 }
