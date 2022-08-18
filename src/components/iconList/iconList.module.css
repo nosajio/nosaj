@@ -19,6 +19,13 @@
   font-size: var(--ms--1-rem);
 }
 
+.circle_icons.icon_list .list_item::before {
+  background-color: rgba(228, 170, 21, 0.1);
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+}
+
 .list_item {
   display: flex;
   font-weight: 500;
@@ -33,17 +40,20 @@
 .arrow.list_item::before {
   width: 13px;
   min-height: 7px;
-  background: url('/ui/icon-arrow.svg') no-repeat center / 100% auto;
+  background: url('/ui/icon-arrow.svg') no-repeat center;
 }
 
 .check.list_item::before {
   width: 12px;
   min-height: 9px;
-  background: url('/ui/icon-check.svg') no-repeat center / 100% auto;
+  background: url('/ui/icon-check.svg') no-repeat center;
+}
+.circle_icons .check.list_item::before {
+  background-size: 8px 6px;
 }
 
 .chevron.list_item::before {
   width: 6px;
   min-height: 9px;
-  background: url('/ui/icon-chevron.svg') no-repeat center / 100% auto;
+  background: url('/ui/icon-chevron.svg') no-repeat center;
 }

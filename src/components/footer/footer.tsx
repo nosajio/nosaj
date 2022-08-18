@@ -37,7 +37,7 @@ export const Footer = () => {
   return (
     <footer className={clsx(s.nosaj_footer, 'container')}>
       <div className={clsx('content', s.footer_content)}>
-        <IconList className={s.footer_links} icon="chevron" compact>
+        <IconList className={s.footer_links} icon="chevron" compact smallText>
           {footerLinks.map((l, i) => (
             <Link key={i} href={l.href}>
               <a target={l.blank ? '_blank' : undefined}>{l.label}</a>

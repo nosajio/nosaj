@@ -1,8 +1,7 @@
 html,
 body {
   font-size: 20px;
-  font-family: 'silka', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--fontset-primary);
   line-height: var(--ms-2);
 
   -webkit-font-smoothing: antialiased;
@@ -13,7 +12,7 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-  box-shadow: inset 0 -1px rgba(255,255,255,0.3);
+  box-shadow: inset 0 -1px rgba(255, 255, 255, 0.3);
 }
 
 a.noop {
@@ -70,4 +69,14 @@ h2 {
   h2 {
     font-size: var(--ms-1-rem);
   }
+}
+
+.chaney {
+  font-family: var(--fontset-heading);
+  font-size: var(--ms--1-rem);
+  color: var(--color-primary);
+}
+
+.chaney.chaney-small {
+  font-size: var(--ms--2-rem);
 }

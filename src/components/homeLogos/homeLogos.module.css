@@ -2,6 +2,7 @@
 }
 
 .logos_title {
+  display: none;
 }
 
 .logos_list {
@@ -37,4 +38,32 @@
 .logos_list_item.firstminute-logo {
   background-image: url('/logos/firstminute.svg');
   background-size: 125px auto;
+}
+
+@media (--bp-medium) {
+  .logos_title {
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: var(--ms-1-rem);
+    font-weight: 500;
+    margin-bottom: var(--ms-2-rem);
+  }
+
+  .logos_list_item {
+    flex-basis: 25%;
+  }
+
+  .logos_list_item.frontier-logo {
+    background-size: unset;
+  }
+  .logos_list_item.pave-logo {
+    background-size: unset;
+  }
+  .logos_list_item.bbc-logo {
+    background-size: unset;
+  }
+  .logos_list_item.firstminute-logo {
+    background-size: unset;
+  }
 }

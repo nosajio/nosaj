@@ -8,7 +8,7 @@ export const HomeLogos = () => {
     <div className="container pt">
       <div className="content">
         <section className={s.home_logos}>
-          <h2 className={s.logos_title}></h2>
+          <h2 className={s.logos_title}>50+ products built for startups and established companies.</h2>
           <ul className={s.logos_list}>
             {logos.map((l, i) => (
               <li

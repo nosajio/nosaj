@@ -2,16 +2,20 @@ import clsx from 'clsx';
 import { ReactNode } from 'react';
 import s from './iconList.module.css';
 
-type ArrowListProps = {
+type Bools<K extends string> = {
+  [keys in K]?: boolean;
+};
+
+type ArrowListProps = Bools<
+  'compact' | 'smallText' | 'center' | 'circleIcon'
+> & {
   children: ReactNode[] | ReactNode;
   icon?: 'arrow' | 'check' | 'chevron';
   className?: string;
-  compact?: boolean;
-  center?: boolean;
-  smallText?: boolean;
 };
 
 export const IconList = ({
+  circleIcon,
   center,
   smallText,
   compact,
@@ -37,6 +41,7 @@ export const IconList = ({
         compact && s.compact_list,
         center && s.center_list,
         smallText && s.font_size_small,
+        circleIcon && s.circle_icons
       )}
     >
       {Array.isArray(children)

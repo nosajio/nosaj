@@ -13,7 +13,7 @@ export const Page = ({ children, header = true, footer = true }: PageProps) => {
     <main id={s.main}>
       <TronBar />
       {header && <Header />}
-      {children}
+      <div className={s.page}>{children}</div>
       {footer && <Footer />}
     </main>
   );
