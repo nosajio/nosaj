@@ -7,9 +7,13 @@ type ArrowListProps = {
   icon?: 'arrow' | 'check' | 'chevron';
   className?: string;
   compact?: boolean;
+  center?: boolean;
+  smallText?: boolean;
 };
 
 export const IconList = ({
+  center,
+  smallText,
   compact,
   className,
   children,
@@ -26,7 +30,15 @@ export const IconList = ({
   }
 
   return (
-    <ul className={clsx(className, s.icon_list, compact && s.compact_list)}>
+    <ul
+      className={clsx(
+        className,
+        s.icon_list,
+        compact && s.compact_list,
+        center && s.center_list,
+        smallText && s.font_size_small,
+      )}
+    >
       {Array.isArray(children)
         ? children.map(renderChild)
         : renderChild(children)}

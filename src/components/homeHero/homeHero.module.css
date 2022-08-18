@@ -1,0 +1,59 @@
+.hero_content {
+  display: grid;
+  row-gap: var(--ms-1-rem);
+  justify-items: center;
+  grid-template:
+    'portrait' auto
+    'messages' auto
+    'action-alpha' auto
+    'action-beta' auto / 1fr;
+}
+
+.portrait {
+  grid-area: portrait;
+  width: 158px;
+  border-radius: 50%;
+  background: no-repeat url('/jason.png') center / 170% auto;
+}
+
+.portrait::after {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.messages {
+  grid-area: messages;
+  display: grid;
+  row-gap: var(--ms--1-rem);
+  text-align: center;
+}
+
+h1.opener {
+  font-size: var(--ms-2-rem);
+  font-weight: 700;
+}
+
+h2.sub_opener {
+  font-size: 1rem;
+}
+
+.action_a {
+  grid-area: action-alpha;
+}
+
+.action_b {
+  grid-area: action-beta;
+}
+
+@media (--bp-medium) {
+  .hero_content {
+  }
+
+  .portrait {
+    width: 100%;
+    max-width: 429px;
+    background-size: cover;
+    border-radius: 3px;
+  }
+}

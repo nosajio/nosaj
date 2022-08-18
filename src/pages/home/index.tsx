@@ -1,27 +1,24 @@
-import clsx from 'clsx';
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import Link from 'next/link';
-import { IconList, Footer, Header } from '../../components';
-import s from './home.module.css';
+import {
+  HomeHero,
+  HomeLogos,
+  Page,
+  ServicesForStartups,
+} from '../../components';
 
 const Home: NextPage = () => {
   return (
-    <main id="main">
+    <Page>
       <Head>
         <title>Jason...</title>
         <meta name="description" content="" />
       </Head>
 
-      <Header />
-
-      <div className="content">
-
-      </div>
-
-      <Footer />
-    </main>
+      <HomeHero />
+      <HomeLogos />
+      <ServicesForStartups />
+    </Page>
   );
 };
 

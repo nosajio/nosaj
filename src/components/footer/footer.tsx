@@ -35,8 +35,8 @@ export const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className={clsx(s.nosaj_footer, 'content')}>
-      <div className={clsx('mid', s.footer_content)}>
+    <footer className={clsx(s.nosaj_footer, 'container')}>
+      <div className={clsx('content', s.footer_content)}>
         <IconList className={s.footer_links} icon="chevron" compact>
           {footerLinks.map((l, i) => (
             <Link key={i} href={l.href}>

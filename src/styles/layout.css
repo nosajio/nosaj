@@ -1,22 +1,20 @@
-.content {
-  width: 100vw;
-  padding-left: 1rem;
-  padding-right: 1rem;
+.container {
+  display: flex;
+  /* flex-flow: column nowrap; */
+  /* align-items: center; */
+  justify-content: center;
 }
 
-.mid {
+.content {
   width: 100%;
-  max-width: 650px;
+  max-width: var(--content-max-width);
+  padding-left: var(--ms--1-rem);
+  padding-right: var(--ms--1-rem);
 }
 
 @media (--bp-medium) {
   .content {
     padding-left: var(--ms-4-rem);
     padding-right: var(--ms-4-rem);
-  }
-
-  .mid {
-    margin-left: auto;
-    margin-right: auto;
   }
 }

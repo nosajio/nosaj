@@ -1,0 +1,75 @@
+@custom-media --bp-small (min-width: 428px);
+@custom-media --bp-medium (min-width: 744px);
+@custom-media --bp-large (min-width: 1080px);
+
+:root {
+  /* Colors */
+  --color-primary-000: #0b1412;
+  --color-primary-100: #1d352f;
+  --color-primary-200: #2f564c;
+  --color-primary-300: #417769;
+  --color-primary-400: #539886;
+  --color-primary-500: #6eb09f;
+  --color-primary-600: #8fc2b5;
+  --color-primary-700: #b0d4cb;
+  --color-primary-800: #d1e6e1;
+  --color-primary-900: #f2f8f6;
+
+  --color-primary: #e4aa15;
+  --color-secondary: #fff;
+  --color-buttons: rgba(242, 180, 21, 0.2);
+
+  --content-max-width: 1062px;
+
+  /* Modular scale: 1.25  - major third */
+  --ms-10: 9.313;
+  --ms-9: 7.452;
+  --ms-8: 5.96;
+  --ms-7: 4.768;
+  --ms-6: 3.815;
+  --ms-5: 3.052;
+  --ms-4: 2.441;
+  --ms-3: 1.953;
+  --ms-2: 1.563;
+  --ms-1: 1.25;
+  --ms-0: 1;
+  --ms--1: 0.8;
+  --ms--2: 0.64;
+  --ms--3: 0.512;
+  --ms--4: 0.41;
+  --ms--5: 0.32;
+
+  --ms-10-rem: calc(var(--ms-10) * 1rem);
+  --ms-9-rem: calc(var(--ms-9) * 1rem);
+  --ms-8-rem: calc(var(--ms-8) * 1rem);
+  --ms-7-rem: calc(var(--ms-7) * 1rem);
+  --ms-6-rem: calc(var(--ms-6) * 1rem);
+  --ms-5-rem: calc(var(--ms-5) * 1rem);
+  --ms-4-rem: calc(var(--ms-4) * 1rem);
+  --ms-3-rem: calc(var(--ms-3) * 1rem);
+  --ms-2-rem: calc(var(--ms-2) * 1rem);
+  --ms-1-rem: calc(var(--ms-1) * 1rem);
+  --ms-0-rem: calc(var(--ms-0) * 1rem);
+  --ms--1-rem: calc(var(--ms--1) * 1rem);
+  --ms--2-rem: calc(var(--ms--2) * 1rem);
+  --ms--3-rem: calc(var(--ms--3) * 1rem);
+  --ms--4-rem: calc(var(--ms--4) * 1rem);
+  --ms--5-rem: calc(var(--ms--5) * 1rem);
+
+  --ms-9-px: calc(var(--ms-10) 20px);
+  --ms-9-px: calc(var(--ms-9) * 20px);
+  --ms-8-px: calc(var(--ms-8) * 20px);
+  --ms-7-px: calc(var(--ms-7) * 20px);
+  --ms-6-px: calc(var(--ms-6) * 20px);
+  --ms-5-px: calc(var(--ms-5) * 20px);
+  --ms-4-px: calc(var(--ms-4) * 20px);
+  --ms-3-px: calc(var(--ms-3) * 20px);
+  --ms-2-px: calc(var(--ms-2) * 20px);
+  --ms-1-px: calc(var(--ms-1) * 20px);
+  --ms-0-px: calc(var(--ms-0) * 20px);
+  --ms--1-px: calc(var(--ms--1) * 20px);
+  --ms--2-px: calc(var(--ms--2) * 20px);
+  --ms--3-px: calc(var(--ms--3) * 20px);
+  --ms--4-px: calc(var(--ms--4) * 20px);
+  --ms--5-px: calc(var(--ms--5) * 20px);
+}

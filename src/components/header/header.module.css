@@ -1,29 +1,24 @@
 .nosaj_header {
   display: flex;
   justify-content: space-between;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-@media (--bp-medium) {
-  .nosaj_header {
-    padding-top: var(--ms-2-rem);
-    padding-bottom: var(--ms-2-rem);
-  }
+  align-items: center;
+  padding-top: var(--ms--1-rem);
+  padding-bottom: var(--ms--1-rem);
 }
 
 .nosaj_logo {
-  width: 107px;
-  height: 16px;
-
+  display: block;
+  width: 85px;
+  height: 12px;
+  background: no-repeat url('/nosaj-logo.svg') center / contain;
 }
 
 .call_btn {
   display: block;
   box-shadow: none;
   font-size: var(--ms--1-rem);
-  font-weight: 500;
-  background: rgba(255, 255, 255, 0.1);
+  font-weight: 700;
+  background: #040606;
   padding: var(--ms--4-rem) var(--ms--1-rem);
   line-height: 1;
   border-radius: 3px;
@@ -31,4 +26,16 @@
 
 .call_btn:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+@media (--bp-medium) {
+  .nosaj_header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .nosaj_logo {
+    width: 107px;
+    height: 16px;
+  }
 }

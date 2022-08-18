@@ -11,8 +11,17 @@
   row-gap: var(--ms--3-rem);
 }
 
+.center_list.icon_list {
+  justify-items: center;
+}
+
+.font_size_small.icon_list .list_item {
+  font-size: var(--ms--1-rem);
+}
+
 .list_item {
   display: flex;
+  font-weight: 500;
 }
 
 .list_item::before {

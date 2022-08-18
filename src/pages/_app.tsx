@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import 'normalize.css';
+import '../styles/vars.css';
 import '../styles/fonts.css';
 import '../styles/layout.css';
 import '../styles/globals.css';
