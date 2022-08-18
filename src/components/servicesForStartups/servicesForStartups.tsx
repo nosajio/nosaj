@@ -42,11 +42,10 @@ export const ServicesForStartups = () => {
               <>Product &amp; UI design.</>
               <>Engineering.</>
               <>Finding product market fit.</>
-              <>Education.</>
             </IconList>
           </div>
           <footer className={s.services_footer}>
-            <Button>Book a 15 min call</Button>
+            <Button href="/call">Book a 15 min call</Button>
           </footer>
         </article>
       </div>

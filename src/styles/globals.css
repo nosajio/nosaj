@@ -74,6 +74,7 @@ h2 {
 .chaney {
   font-family: var(--fontset-heading);
   font-size: var(--ms--1-rem);
+  letter-spacing: 0.04ch;
   color: var(--color-primary);
 }
 

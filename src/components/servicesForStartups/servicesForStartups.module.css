@@ -22,6 +22,7 @@
 .section_head h1 {
   font-family: var(--fontset-heading);
   font-size: var(--ms--1-rem);
+  letter-spacing: 0.04ch;
   text-align: center;
   color: var(--color-primary);
 }
@@ -74,4 +75,6 @@ header.text_opener p {
 
 footer.services_footer {
   grid-area: footer;
+  display: flex;
+  justify-content: center;
 }

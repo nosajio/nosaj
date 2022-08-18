@@ -5,6 +5,7 @@ import {
   HomeLogos,
   Page,
   ServicesForStartups,
+  Testimonials
 } from '../../components';
 
 const Home: NextPage = () => {
@@ -18,6 +19,7 @@ const Home: NextPage = () => {
       <HomeHero />
       <HomeLogos />
       <ServicesForStartups />
+      <Testimonials />
     </Page>
   );
 };

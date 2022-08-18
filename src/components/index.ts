@@ -6,4 +6,5 @@ export * from './homeLogos';
 export * from './iconList';
 export * from './page';
 export * from './servicesForStartups';
+export * from './testimonials';
 export * from './tronBar';
