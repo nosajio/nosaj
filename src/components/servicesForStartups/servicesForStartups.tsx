@@ -1,8 +1,10 @@
 import clsx from 'clsx';
 import { Button, IconList } from '..';
+import { useBreakpoint } from '../../hooks';
 import s from './servicesForStartups.module.css';
 
 export const ServicesForStartups = () => {
+  const isLtMedium = useBreakpoint('(max-width: 744px)');
   return (
     <section className="container pt">
       <header className={s.section_head}>
@@ -37,7 +39,7 @@ export const ServicesForStartups = () => {
           </div>
           <div className={s.services_visual}></div>
           <div className={s.services_list}>
-            <IconList icon="check" circleIcon compact smallText>
+            <IconList circleIcon compact icon="check" smallText={isLtMedium}>
               <>Product strategy.</>
               <>Product &amp; UI design.</>
               <>Engineering.</>

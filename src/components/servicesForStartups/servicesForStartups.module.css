@@ -78,3 +78,24 @@ footer.services_footer {
   display: flex;
   justify-content: center;
 }
+
+@media (--bp-medium) {
+  .section_head h1 {
+    font-size: var(--ms-1-rem);
+  }
+
+  .services_content {
+    margin-top: var(--ms-6-rem);
+    grid-auto-rows: unset;
+    row-gap: var(--ms-4-rem);
+    grid-template:
+      'opener visual' auto
+      'text visual' auto
+      'list visual' auto
+      'footer visual' auto / 449px 1fr;
+  }
+
+  footer.services_footer {
+    justify-content: unset;
+  }
+}
