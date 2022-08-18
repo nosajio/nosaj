@@ -11,6 +11,7 @@
   padding: 0;
   margin: 0;
   list-style-type: none;
+  justify-content: center;
 }
 
 .logos_list_item {
@@ -55,15 +56,15 @@
   }
 
   .logos_list_item.frontier-logo {
-    background-size: unset;
+    background-size: auto 35px;
   }
   .logos_list_item.pave-logo {
-    background-size: unset;
+    background-size: auto 25px;
   }
   .logos_list_item.bbc-logo {
-    background-size: unset;
+    background-size: auto 30px;
   }
   .logos_list_item.firstminute-logo {
-    background-size: unset;
+    background-size: auto 28px;
   }
 }

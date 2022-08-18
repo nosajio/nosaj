@@ -26,4 +26,21 @@
     padding-left: var(--ms-4-rem);
     padding-right: var(--ms-4-rem);
   }
+
+  .pt\:medium,
+  .pt {
+    padding-top: var(--ms-8-rem);
+  }
+
+  .pb\:medium,
+  .pb {
+    padding-bottom: var(--ms-8-rem);
+  }
+}
+
+@media (--bp-large) {
+  .content {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

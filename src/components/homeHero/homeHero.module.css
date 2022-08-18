@@ -48,6 +48,28 @@ h2.sub_opener {
 
 @media (--bp-medium) {
   .hero_content {
+    grid-template:
+      'portrait .' 1fr
+      'portrait messages' auto
+      'portrait action-alpha' auto
+      'portrait action-beta' auto
+      'portrait .' 1fr / 1fr 1fr;
+    justify-items: start;
+    align-items: start;
+    column-gap: 3vw;
+    /* column-gap: var(--ms-3-rem); */
+  }
+
+  .messages {
+    text-align: left;
+  }
+
+  h1.opener {
+    font-size: var(--ms-4-rem);
+  }
+
+  h2.sub_opener {
+    font-size: var(--ms-1-rem);
   }
 
   .portrait {
@@ -55,5 +77,6 @@ h2.sub_opener {
     max-width: 429px;
     background-size: cover;
     border-radius: 3px;
+    align-self: center;
   }
 }

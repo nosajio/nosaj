@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Button, IconList } from '..';
+import { useBreakpoint } from '../../hooks';
 import s from './homeHero.module.css';
 
 // type HomeHeroProps = {
@@ -7,8 +8,9 @@ import s from './homeHero.module.css';
 // }
 
 export const HomeHero = () => {
+  const isLtMedium = useBreakpoint('(max-width: 744px)');
   return (
-    <section className="container">
+    <section className="container pt:medium">
       <div className="content">
         <div className={s.hero_content}>
           <div className={s.portrait} />
@@ -25,7 +27,12 @@ export const HomeHero = () => {
             <Button href="/call">Book a 15 min call</Button>
           </div>
           <div className={s.action_b}>
-            <IconList icon="arrow" center smallText compact>
+            <IconList
+              smallText
+              icon="arrow"
+              center={isLtMedium}
+              compact={isLtMedium}
+            >
               <Link href="/#startups">
                 <a>Services for startups</a>
               </Link>
