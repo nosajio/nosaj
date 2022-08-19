@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { breakpointListener } from '../utils';
 
 const breakpoint = new Map([
@@ -15,7 +15,7 @@ export const useBreakpoint = (mq: string) => {
   const listener = useRef<ReturnType<typeof breakpointListener>>();
   const [match, setMatch] = useState(false);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!listener.current) {
       listener.current = breakpointListener(mq);
     }
