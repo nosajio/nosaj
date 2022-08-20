@@ -21,6 +21,7 @@
   margin: 0;
   display: grid;
   grid-auto-rows: auto;
+  justify-content: stretch;
   text-align: center;
 }
 
@@ -77,6 +78,7 @@
   font-size: var(--ms--2-rem);
   font-weight: 500;
   letter-spacing: 1px;
+  justify-self: flex-end;
 }
 
 .footer_where {
@@ -97,10 +99,11 @@
   }
 
   .quote_item + .quote_item::before {
-    top: 0;
+    display: none;
+    /* top: 0;
     left: -1px;
     width: 2px;
-    height: 100%;
+    height: 100%; */
   }
 
   .quote_item .pave.logo {

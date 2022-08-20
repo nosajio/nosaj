@@ -3,6 +3,13 @@ import { Button, IconList } from '..';
 import { useBreakpoint } from '../../hooks';
 import s from './servicesForStartups.module.css';
 
+const services = [
+  'Prototyping.',
+  'Product strategy / finding product market fit.',
+  'Product & UI design.',
+  'Engineering.',
+];
+
 export const ServicesForStartups = () => {
   const isLtMedium = useBreakpoint('(max-width: 744px)');
   return (
@@ -40,10 +47,9 @@ export const ServicesForStartups = () => {
           <div className={s.services_visual}></div>
           <div className={s.services_list}>
             <IconList circleIcon compact icon="check" smallText={isLtMedium}>
-              <>Product strategy.</>
-              <>Product &amp; UI design.</>
-              <>Engineering.</>
-              <>Finding product market fit.</>
+              {services.map(service => (
+                <>{service}</>
+              ))}
             </IconList>
           </div>
           <footer className={s.services_footer}>

@@ -8,6 +8,7 @@
   display: grid;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  row-gap: 1rem;
   grid-template-rows: auto;
   grid-template-areas:
     'links'
@@ -21,10 +22,11 @@
 .footer_copy {
   display: flex;
   align-items: flex-end;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
   grid-area: copyright;
   justify-self: stretch;
   align-self: end;
+  justify-content: flex-end;
   font-size: var(--ms--1-rem);
 }
 
@@ -32,7 +34,7 @@
   width: 52px;
   height: 22px;
   background: no-repeat url('/ui/nosajloop.svg') center / contain;
-  margin-bottom: var(--ms-2-rem);
+  margin-right: var(--ms-2-rem);
 }
 
 @media (--bp-medium) {
@@ -42,5 +44,14 @@
     grid-template-columns: 1fr 1fr;
     padding-top: var(--ms-3-rem);
     padding-bottom: var(--ms-3-rem);
+  }
+
+  .footer_copy {
+    flex-flow: column nowrap;
+  }
+
+  .loopyloop {
+    margin-right: 0;
+    margin-bottom: var(--ms-2-rem);
   }
 }

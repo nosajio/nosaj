@@ -9,6 +9,11 @@
   justify-content: center;
   text-align: center; */
   padding: var(--ms--4-rem) 1rem calc(var(--ms--4-rem) - 1px);
+  transition: background-color 300ms var(--ease-out-quad);
+}
+
+.button_container:hover {
+  background: var(--color-buttons-hover);
 }
 
 /* @media (--bp-medium) {

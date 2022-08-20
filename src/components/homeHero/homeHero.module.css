@@ -13,7 +13,7 @@
   grid-area: portrait;
   width: 158px;
   border-radius: 50%;
-  background: no-repeat url('/jason.png') center / 170% auto;
+  background: no-repeat url('/jason.png') center / 140% auto;
 }
 
 .portrait::after {
@@ -78,5 +78,6 @@ h2.sub_opener {
     background-size: cover;
     border-radius: 3px;
     align-self: center;
+    transform: rotate(-2deg);
   }
 }

@@ -11,6 +11,9 @@
     Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
     Helvetica Neue, sans-serif;
 
+  /* Easing */
+  --ease-out-quad: cubic-bezier(0.25, 1, 0.5, 1);
+
   /* Colors */
   --color-primary-000: #0b1412;
   --color-primary-100: #1d352f;
@@ -26,6 +29,7 @@
   --color-primary: #e4aa15;
   --color-secondary: #fff;
   --color-buttons: rgba(242, 180, 21, 0.2);
+  --color-buttons-hover: rgba(242, 180, 21, 0.5);
 
   --content-max-width: 1062px;
 
