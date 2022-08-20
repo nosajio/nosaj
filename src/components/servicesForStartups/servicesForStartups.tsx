@@ -48,6 +48,15 @@ export const ServicesForStartups = forwardRef<HTMLElement | null>((_, ref) => {
               set of skills and experiences often found by hiring multiple
               people.
             </p>
+            <p>
+              <a
+                href="https://nosaj.substack.com/p/software-that-makes-money"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Read: How I make products that make money.
+              </a>
+            </p>
           </div>
           <div className={s.services_visual}></div>
           <div className={s.services_list}>
