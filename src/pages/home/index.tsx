@@ -5,10 +5,13 @@ import {
   HomeLogos,
   Page,
   ServicesForStartups,
-  Testimonials
+  Testimonials,
 } from '../../components';
+import { useScrollToWhenPath } from '../../hooks';
 
 const Home: NextPage = () => {
+  const startupsRef = useScrollToWhenPath('/#startups');
+
   return (
     <Page pagename="home">
       <Head>
@@ -18,7 +21,7 @@ const Home: NextPage = () => {
 
       <HomeHero />
       <HomeLogos />
-      <ServicesForStartups />
+      <ServicesForStartups ref={startupsRef} />
       <Testimonials />
     </Page>
   );

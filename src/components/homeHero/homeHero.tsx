@@ -4,7 +4,6 @@ import { useBreakpoint } from '../../hooks';
 import s from './homeHero.module.css';
 
 // type HomeHeroProps = {
-
 // }
 
 export const HomeHero = () => {

@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { forwardRef } from 'react';
 import { Button, IconList } from '..';
 import { useBreakpoint } from '../../hooks';
 import s from './servicesForStartups.module.css';
@@ -10,10 +11,10 @@ const services = [
   'Engineering.',
 ];
 
-export const ServicesForStartups = () => {
+export const ServicesForStartups = forwardRef<HTMLElement | null>((_, ref) => {
   const isLtMedium = useBreakpoint('(max-width: 744px)');
   return (
-    <section className="container pt">
+    <section className="container pt" ref={ref}>
       <header className={s.section_head}>
         <h1>Services for startups</h1>
       </header>
@@ -61,4 +62,6 @@ export const ServicesForStartups = () => {
       </div>
     </section>
   );
-};
+});
+
+ServicesForStartups.displayName = 'ServicesForStartups';
