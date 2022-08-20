@@ -18,15 +18,17 @@
   display: block;
   box-shadow: none;
   font-size: var(--ms--1-rem);
-  font-weight: 700;
+  font-weight: 600;
   background: #040606;
   padding: var(--ms--4-rem) var(--ms--1-rem);
   line-height: 1;
-  border-radius: 3px;
+  border-radius: 30px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .call_btn:hover {
   background: rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 @media (--bp-medium) {

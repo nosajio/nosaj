@@ -1,13 +1,9 @@
 .button_container {
   color: white;
   background: var(--color-buttons);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--ms--1-rem);
   border-radius: var(--ms-1-rem);
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center; */
   padding: var(--ms--4-rem) 1rem calc(var(--ms--4-rem) - 1px);
   transition: background-color 300ms var(--ease-out-quad);
 }
