@@ -7,6 +7,7 @@ type PageProps = {
   header?: boolean;
   footer?: boolean;
   children?: ReactNode;
+  pagename?: string;
 };
 
 export const Page = ({
@@ -14,10 +15,12 @@ export const Page = ({
   callButton = true,
   header = true,
   footer = true,
+  pagename,
 }: PageProps) => {
+  const isHome = pagename === 'home';
   return (
     <main id={s.main}>
-      <TronBar />
+      <TronBar showoff={isHome} />
       {header && <Header showCallButton={callButton} />}
       <div className={s.page}>{children}</div>
       {footer && <Footer />}

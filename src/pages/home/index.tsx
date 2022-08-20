@@ -10,7 +10,7 @@ import {
 
 const Home: NextPage = () => {
   return (
-    <Page>
+    <Page pagename="home">
       <Head>
         <title>🚀 Shipping software for startups</title>
         <meta name="description" content="" />

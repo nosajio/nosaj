@@ -1,14 +1,95 @@
+@keyframes show {
+  /* 25% {
+    background-position-y: -1px;
+    background-position-x: 50vw;
+  }
+  45% {
+    background-position-y: -1px;
+    background-position-x: -50vw;
+  }
+  60% {
+    background-position-y: -1px;
+    background-position-x: 30vw;
+  } 
+  90% {
+    background-position-y: -1px;
+    background-position-x: -100vw;
+  }
+  90.001% {
+    background-position-y: 0px;
+    background-position-x: 100vw;
+  }
+  100% {
+    background-position-x: 0vw;
+  }
+  */
+  0% {
+    background-position-x: 0vw;
+  }
+  50% {
+    background-position-x: 100vw;
+  }
+  50.001% {
+    background-position-x: -100vw;
+  }
+  90% {
+    background-position-y: 0px;
+  }
+  100% {
+    background-position-x: 0vw;
+  }
+}
+
+@keyframes init {
+  from {
+    background-position-y: -6px;
+  }
+  to {
+    background-position-y: 0px;
+  }
+}
+
 .bar {
-  position: absolute;
+  --height: 3px;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 300;
   width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    rgba(228, 170, 21, 0) 0%,
-    #e4aa15 49.16%,
-    rgba(228, 170, 21, 0) 100.41%
-  );
+  height: var(--height);
+}
+
+.bar_color {
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(
+      90deg,
+      rgba(228, 170, 21, 0) 0%,
+      #e4aa15 49.16%,
+      rgba(228, 170, 21, 0) 100.41%
+    ) */
+  background: radial-gradient(
+      39.5% 34125% at 50% 50%,
+      #e4aa15 0%,
+      rgba(228, 170, 21, 0) 100%
+    )
+    no-repeat;
+}
+
+.anim_show .bar_color {
+  animation: 2s show 1 both;
+  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.anim_init .bar_color {
+  animation: 500ms init 1 both;
+  animation-timing-function: var(--ease-out-quad);
+}
+
+.hide .bar_color {
+  opacity: 0;
 }
