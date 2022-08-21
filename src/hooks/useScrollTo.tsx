@@ -16,7 +16,6 @@ export const useScrollTo = (): UseScrollToValue => {
     if (elY < 1) {
       return;
     }
-    console.log(elY, scrollY);
 
     window?.scrollTo({
       top: elY + scrollY,
