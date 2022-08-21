@@ -1,11 +1,6 @@
 const SSH_USER = process.env.SSH_USER;
 const SSH_HOST = process.env.SSH_HOST;
 
-if (!SSH_USER || !SSH_HOST) {
-  console.error('Missing env vars');
-  process.exit(1);
-}
-
 module.exports = {
   apps: [
     {
