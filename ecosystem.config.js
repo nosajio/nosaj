@@ -1,6 +1,10 @@
 const SSH_USER = process.env.SSH_USER;
 const SSH_HOST = process.env.SSH_HOST;
 
+if (!SSH_USER || !SSH_HOST) {
+  console.log('fyi; running ecosystem file without ssh vars');
+}
+
 module.exports = {
   apps: [
     {
