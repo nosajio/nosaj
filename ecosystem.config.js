@@ -5,7 +5,7 @@ module.exports = {
   apps: [
     {
       script: 'npm start',
-      watch: '.',
+      watch: false,
       name: 'nosaj.io',
       instances: 1,
       max_restarts: 20,
