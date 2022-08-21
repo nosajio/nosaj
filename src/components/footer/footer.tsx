@@ -12,7 +12,7 @@ type FooterLink = {
 
 const footerLinks: FooterLink[] = [
   {
-    href: '/startups',
+    href: '/#startups',
     label: 'Services for startups',
   },
 

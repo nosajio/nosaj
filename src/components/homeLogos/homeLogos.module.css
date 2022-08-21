@@ -46,9 +46,9 @@
     display: block;
     text-align: center;
     width: 100%;
-    font-size: var(--ms-1-rem);
+    font-size: 1rem;
     font-weight: 500;
-    margin-bottom: var(--ms-2-rem);
+    margin-top: var(--ms-2-rem);
   }
 
   .logos_list_item {
