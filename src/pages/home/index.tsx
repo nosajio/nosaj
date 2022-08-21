@@ -22,7 +22,6 @@ const Home: NextPage = () => {
       <HomeHero />
       <HomeLogos />
       <ServicesForStartups ref={startupsRef} />
-      <Testimonials />
     </Page>
   );
 };

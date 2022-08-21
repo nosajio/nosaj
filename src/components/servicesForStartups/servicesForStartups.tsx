@@ -2,7 +2,9 @@ import clsx from 'clsx';
 import { forwardRef } from 'react';
 import { Button, IconList } from '..';
 import { useBreakpoint } from '../../hooks';
+import { repeat } from '../../utils';
 import s from './servicesForStartups.module.css';
+import StarSVG from './star.svg';
 
 const services = [
   'Product strategy.',
@@ -20,6 +22,7 @@ export const ServicesForStartups = forwardRef<HTMLElement | null>((_, ref) => {
       </header>
       <div className="content">
         <article className={s.services_content}>
+          <ServicesTestimonials />
           <header className={s.text_opener}>
             <p>
               I partner with small and mid sized teams design and build valuable
@@ -74,3 +77,60 @@ export const ServicesForStartups = forwardRef<HTMLElement | null>((_, ref) => {
 });
 
 ServicesForStartups.displayName = 'ServicesForStartups';
+
+type Testimonial = {
+  logoName: string;
+  text: string;
+  who: string;
+  where: string;
+};
+
+const testimonials: Testimonial[] = [
+  {
+    logoName: 'frontier',
+    text: 'Jason is a one man startup machine with a record of shipping a huge range of products.',
+    who: "Elliot O'Connor",
+    where: 'Founder & CEO, Frontier',
+  },
+  {
+    logoName: 'pave',
+    text: 'Working with Jason unlocked enormous potential for Pave.',
+    who: 'Matt Schulman',
+    where: 'Founder & CEO, Pave',
+  },
+  {
+    logoName: 'tradespace',
+    text: 'Jason was critical to ensuring we got to market quickly with a robust product.',
+    who: 'Alec Sorensen',
+    where: 'Founder & CEO, Tradespace',
+  },
+];
+
+const ServicesTestimonials = () => {
+  const stars = (
+    <div className={clsx(s.stars)}>
+      {repeat(5).map((_, i) => (
+        <StarSVG key={i} />
+      ))}
+    </div>
+  );
+  return (
+    <ul className={s.quotes}>
+      {testimonials.map((t, i) => [
+        <li className={s.quote_stars} key={`star-${i}`}>
+          {stars}
+        </li>,
+        <li className={s.quote_item} key={i}>
+          <div className={clsx(s[t.logoName], s.logo)} />
+          <blockquote>
+            <p>&quot;{t.text}&quot;</p>
+            <footer className={s.quote_footer}>
+              <div className={s.footer_who}>{t.who}</div>
+              <div className={s.footer_where}>{t.where}</div>
+            </footer>
+          </blockquote>
+        </li>,
+      ])}
+    </ul>
+  );
+};

@@ -29,13 +29,13 @@
 
 .services_content {
   display: grid;
-  grid-template-areas:
-    'opener'
-    'visual'
-    'text'
-    'list'
-    'footer';
-  grid-auto-rows: auto;
+  grid-template:
+    'opener' auto
+    'visual' auto
+    'text' auto
+    'list' auto
+    'footer' auto
+    'quotes' auto / 1fr;
   row-gap: var(--ms-1-rem);
   margin-top: var(--ms-2-rem);
 }
@@ -79,23 +79,121 @@ footer.services_footer {
   justify-content: center;
 }
 
-@media (--bp-medium) {
+@media (--bp-large) {
   .section_head h1 {
     font-size: var(--ms-1-rem);
   }
 
   .services_content {
     margin-top: var(--ms-6-rem);
-    grid-auto-rows: unset;
     row-gap: var(--ms-4-rem);
     grid-template:
-      'opener visual' auto
-      'text visual' auto
-      'list visual' auto
-      'footer visual' auto / 449px 1fr;
+      'opener quotes' auto
+      'list quotes' auto
+      'text quotes' auto
+      'footer quotes' auto / 449px 1fr;
   }
 
   footer.services_footer {
     justify-content: unset;
+  }
+}
+
+/* Testimonials */
+
+.stars {
+  filter: drop-shadow(0px 0px var(--ms--3-rem) rgba(228, 170, 21, 0.7));
+  width: 116px;
+  display: grid;
+  column-gap: var(--ms--4-rem);
+  grid-auto-flow: column;
+}
+
+.quotes {
+  justify-self: center;
+  grid-area: quotes;
+  max-width: 440px;
+  list-style-type: none;
+  margin: 0;
+  display: grid;
+  grid-gap: var(--ms-4-rem);
+  grid-auto-rows: auto;
+  justify-content: stretch;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: var(--ms--3-rem);
+  padding: var(--ms-2-rem);
+}
+
+.quote_stars {
+  display: flex;
+  justify-content: center;
+}
+
+.quote_item {
+  position: relative;
+  width: 100%;
+  padding: var(--row-gap) 0;
+}
+
+.quote_item blockquote {
+  display: block;
+  margin: 0;
+}
+
+.quote_item p {
+  margin: 1rem 0;
+  font-weight: 500;
+  width: 100%;
+}
+
+.quote_item .logo {
+  width: 100%;
+}
+
+.quote_item .pave.logo {
+  background: no-repeat url('/logos/pave.svg') center / contain;
+  height: var(--ms--1-rem);
+}
+
+.quote_item .frontier.logo {
+  background: no-repeat url('/logos/frontier-corona.svg') center / contain;
+  height: var(--ms-2-rem);
+}
+
+.quote_item .tradespace.logo {
+  background: no-repeat url('/logos/tradespace.svg') center / contain;
+  height: var(--ms-2-rem);
+}
+
+.quote_footer {
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-size: var(--ms--2-rem);
+  font-weight: 500;
+  letter-spacing: 1px;
+  justify-self: flex-end;
+}
+
+.footer_where {
+  opacity: 0.6;
+}
+
+@media (--bp-medium) {
+  .quotes {
+    padding: var(--ms-4-rem);
+  }
+
+  .quote_item .pave.logo {
+    height: var(--ms-2-rem);
+    background-size: auto var(--ms-1-rem);
+  }
+
+  .quote_item .frontier.logo {
+    height: var(--ms-3-rem);
+  }
+
+  .quote_item .tradespace.logo {
+    height: var(--ms-3-rem);
   }
 }
