@@ -12,7 +12,7 @@ function Nosajio({ Component, pageProps }: AppProps) {
     <>
       {/* Google analytics */}
       <Script
-        src="https://www.googletagmanager.com/gtag/js?id=UA-122370645-1"
+        src="https://www.googletagmanager.com/gtag/js?id=G-7V8JX5MX4D"
         strategy="afterInteractive"
       />
       <Script strategy="afterInteractive" id="ga">
@@ -20,11 +20,10 @@ function Nosajio({ Component, pageProps }: AppProps) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-
-              gtag('config', 'UA-122370645-1');
+            
+              gtag('config', 'G-7V8JX5MX4D');
           `}
       </Script>
-
       <Component {...pageProps} />;
     </>
   );
