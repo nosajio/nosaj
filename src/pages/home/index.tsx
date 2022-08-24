@@ -5,7 +5,6 @@ import {
   HomeLogos,
   Page,
   ServicesForStartups,
-  Testimonials,
 } from '../../components';
 import { useScrollToWhenPath } from '../../hooks';
 

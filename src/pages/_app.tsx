@@ -24,7 +24,7 @@ function Nosajio({ Component, pageProps }: AppProps) {
               gtag('config', 'G-7V8JX5MX4D');
           `}
       </Script>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </>
   );
 }
